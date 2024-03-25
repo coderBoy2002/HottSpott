@@ -15,28 +15,20 @@ struct LocationsView: View {
     
     var body: some View {
         ZStack {
+            
             if !vm.confirmedRating {
                 Map(position: $vm.cameraPosition,
-                    interactionModes: .zoom) {
-                    ForEach(vm.locations) { location in
-                        MapAnnotation(coordinate: location.coordinates) {
-                            Text("hi")
-                        }
-                    }
-
-                }
+                    interactionModes: .zoom)
                     .ignoresSafeArea()
                 
             }
             else {
                 Map(position: $vm.cameraPosition)
-                    .ignoresSafeArea() {
-                        ForEach(vm.locations) { location in
-                            Annotation(location.name, location.coordinates)
-                        }
-                        
-                    }
+                    .ignoresSafeArea()
             }
+
+            
+
             
             VStack(spacing:0) {
                 Spacer()
