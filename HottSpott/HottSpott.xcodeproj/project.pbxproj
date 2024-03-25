@@ -112,13 +112,13 @@
 			isa = PBXGroup;
 			children = (
 				7DA88FA22BB117A900E2EDDB /* Assets.xcassets */,
+				C1597E2F2BB1153300416992 /* ContentView.swift */,
+				C1597E2D2BB1153300416992 /* HottSpottApp.swift */,
+				C1597E332BB1153600416992 /* HottSpott.entitlements */,
 				C1597E582BB115AF00416992 /* DataServices */,
 				C1597E5B2BB115D400416992 /* ViewModels */,
 				C1597E5A2BB115C900416992 /* Views */,
 				C1597E592BB115C400416992 /* Models */,
-				C1597E2D2BB1153300416992 /* HottSpottApp.swift */,
-				C1597E2F2BB1153300416992 /* ContentView.swift */,
-				C1597E332BB1153600416992 /* HottSpott.entitlements */,
 				C1597E342BB1153600416992 /* Preview Content */,
 			);
 			path = HottSpott;

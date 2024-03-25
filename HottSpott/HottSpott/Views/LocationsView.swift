@@ -9,35 +9,19 @@ import SwiftUI
 import MapKit
 
 
-extension CLLocationCoordinate2D {
-    static let parking = CLLocationCoordinate2D(latitude: 42.35, longitude: -71.06)
-}
 
 
 struct LocationsView: View {
     
     @EnvironmentObject private var vm: LocationsViewModel
-    @State private var searchText = ""
+    
+    @State private var cameraPosition = MapCameraPosition.region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.89, longitude: 12.49), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)))
+    
     
     var body: some View {
-        Map {
-            MapCircle(center: .parking, radius: 20)
-                .foregroundStyle(.orange.opacity(0.25))
-        }
-        .overlay(alignment: .top) {
-            TextField("Search for a locaiton...", text: $searchText)
-                .font(.subheadline)
-                .padding(12)
-                .background(.white)
-                .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-        }
-        .onSubmit(of: .text) {
-            print("Search for locations with query \(searchText)")
-        }
-        .mapControls {
-            MapCompass()
-            MapPitchToggle()
-            MapUserLocationButton()
+        ZStack {
+            Map(position: $cameraPosition)
+                .ignoresSafeArea()
         }
     }
 }
