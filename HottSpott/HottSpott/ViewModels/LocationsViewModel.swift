@@ -24,6 +24,8 @@ class LocationsViewModel: ObservableObject {
     @Published var cameraPosition: MapCameraPosition = MapCameraPosition.region(MKCoordinateRegion())
     let mapSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
     
+    @Published var confirmedRating: Bool = false
+    
     init() {
         let locations = LocationsDataService.locations
         self.locations = locations

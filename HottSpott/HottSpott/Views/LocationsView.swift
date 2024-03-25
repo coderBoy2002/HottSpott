@@ -15,8 +15,17 @@ struct LocationsView: View {
     
     var body: some View {
         ZStack {
-            Map(position: $vm.cameraPosition)
-                .ignoresSafeArea()
+            
+            if !vm.confirmedRating {
+                Map(position: $vm.cameraPosition,
+                    interactionModes: .zoom)
+                    .ignoresSafeArea()
+                
+            }
+            else {
+                Map(position: $vm.cameraPosition)
+                    .ignoresSafeArea()
+            }
             
             VStack(spacing:0) {
                 Spacer()
@@ -30,6 +39,11 @@ struct LocationsView: View {
                         removal: .move(edge:.leading)))
                     .environmentObject(vm)
             }
+            if !vm.confirmedRating {
+                RatingView()
+                    .environmentObject(vm)
+            }
+            
         }
     }
 }

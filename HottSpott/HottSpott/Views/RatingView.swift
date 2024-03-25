@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RatingView: View {
     
+    @EnvironmentObject private var vm: LocationsViewModel
+    
     @State var ratingLineHeight: CGFloat = UIScreen.main.bounds.height / 2
     
     let baseSizeConfirm: CGFloat = 40
@@ -93,6 +95,7 @@ extension RatingView {
                     .onEnded {gesture in
                         stretchOfConfirm = baseSizeConfirm
                         stretchOfTemperature = baseSizeTemperature
+                        vm.confirmedRating = true
                     }
               )
     }
