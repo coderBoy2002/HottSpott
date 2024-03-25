@@ -8,7 +8,6 @@
 import SwiftUI
 import MapKit
 
-
 extension CLLocationCoordinate2D {
     static let parking = CLLocationCoordinate2D(latitude: 42.35, longitude: -71.06)
 }
