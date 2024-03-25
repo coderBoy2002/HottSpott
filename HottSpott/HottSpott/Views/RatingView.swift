@@ -86,7 +86,7 @@ extension RatingView {
                     .onChanged { gesture in
                             stretchOfConfirm = gesture.translation.width * 0.1 + baseSizeConfirm
                             
-                            stretchOfTemperature = baseSizeTemperature - 2.5 * gesture.translation.width
+                            stretchOfTemperature = baseSizeTemperature - 3 * gesture.translation.width
                             if stretchOfTemperature < 20 {
                                 stretchOfTemperature = 20
                             }
