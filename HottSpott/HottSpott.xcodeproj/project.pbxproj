@@ -22,6 +22,10 @@
 		C1597E672BB1166D00416992 /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E662BB1166D00416992 /* LocationsView.swift */; };
 		C1597E692BB1167B00416992 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E682BB1167B00416992 /* RatingView.swift */; };
 		C1597E6B2BB1169400416992 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E6A2BB1169400416992 /* Location.swift */; };
+		C1BC81F72BB1352900C18908 /* AnimatableVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BC81F62BB1352900C18908 /* AnimatableVector.swift */; };
+		C1BC81F92BB1398C00C18908 /* CG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BC81F82BB1398C00C18908 /* CG.swift */; };
+		C1BC81FB2BB139B200C18908 /* MorphingCircleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BC81FA2BB139B200C18908 /* MorphingCircleShape.swift */; };
+		C1BC81FD2BB13A1200C18908 /* MorphingCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BC81FC2BB13A1200C18908 /* MorphingCircle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,10 @@
 		C1597E662BB1166D00416992 /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
 		C1597E682BB1167B00416992 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		C1597E6A2BB1169400416992 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		C1BC81F62BB1352900C18908 /* AnimatableVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableVector.swift; sourceTree = "<group>"; };
+		C1BC81F82BB1398C00C18908 /* CG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CG.swift; sourceTree = "<group>"; };
+		C1BC81FA2BB139B200C18908 /* MorphingCircleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorphingCircleShape.swift; sourceTree = "<group>"; };
+		C1BC81FC2BB13A1200C18908 /* MorphingCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorphingCircle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +169,10 @@
 			isa = PBXGroup;
 			children = (
 				C1597E6A2BB1169400416992 /* Location.swift */,
+				C1BC81F62BB1352900C18908 /* AnimatableVector.swift */,
+				C1BC81F82BB1398C00C18908 /* CG.swift */,
+				C1BC81FA2BB139B200C18908 /* MorphingCircleShape.swift */,
+				C1BC81FC2BB13A1200C18908 /* MorphingCircle.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -316,9 +328,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1597E302BB1153300416992 /* ContentView.swift in Sources */,
+				C1BC81F72BB1352900C18908 /* AnimatableVector.swift in Sources */,
 				C1597E632BB1164900416992 /* LocationMapAnnotationView.swift in Sources */,
 				C1597E6B2BB1169400416992 /* Location.swift in Sources */,
 				C1597E2E2BB1153300416992 /* HottSpottApp.swift in Sources */,
+				C1BC81FD2BB13A1200C18908 /* MorphingCircle.swift in Sources */,
+				C1BC81FB2BB139B200C18908 /* MorphingCircleShape.swift in Sources */,
+				C1BC81F92BB1398C00C18908 /* CG.swift in Sources */,
 				C1597E692BB1167B00416992 /* RatingView.swift in Sources */,
 				C1597E5D2BB1160400416992 /* LocationsDataService.swift in Sources */,
 				C1597E652BB1165A00416992 /* LocationPreviewView.swift in Sources */,
