@@ -11,8 +11,13 @@ struct RatingView: View {
     
     @State var ratingLineHeight: CGFloat = UIScreen.main.bounds.height / 2
     
-    let baseSize: CGFloat = 40
+    let baseSizeConfirm: CGFloat = 40
+    let baseSizeTemperature: CGFloat = 250
     @State var stretchOfConfirm: CGFloat = 40
+    @State var stretchOfTemperature: CGFloat = 250
+    @State var isMovingScale: Bool = false
+    
+    let spacingFactor : CGFloat = 75
     
     var body: some View {
         ZStack {
@@ -29,11 +34,11 @@ struct RatingView: View {
 extension RatingView {
     private var temperatureSlider: some View {
         VStack {
-            RoundedRectangle(cornerRadius: 15)
+            RoundedRectangle(cornerRadius: stretchOfTemperature)
                        .fill(.red)
                        .ignoresSafeArea()
                        .frame(height: ratingLineHeight)
-            RoundedRectangle(cornerRadius: 15)
+            RoundedRectangle(cornerRadius: stretchOfTemperature)
                        .fill(.blue)
                        .ignoresSafeArea()
                        .frame(height: UIScreen.main.bounds.height - ratingLineHeight)
@@ -42,10 +47,24 @@ extension RatingView {
         .gesture(
             DragGesture()
                 .onChanged { gesture in
-                    ratingLineHeight = gesture.location.y
+                    if isMovingScale {
+                        ratingLineHeight = gesture.location.y
+                        if ratingLineHeight < spacingFactor {
+                            ratingLineHeight = spacingFactor
+                        }
+                        else if ratingLineHeight > UIScreen.main.bounds.height - spacingFactor {
+                            ratingLineHeight = UIScreen.main.bounds.height - spacingFactor
+                        }
+                    }
+                    else {
+                        if (gesture.location.y - ratingLineHeight) < 20 {
+                            isMovingScale = true
+                        }
+                    }
+                        
                 }
                 .onEnded { gesture in
-                    ratingLineHeight = gesture.location.y
+                    isMovingScale = false
                 }
         )
     }
@@ -57,16 +76,23 @@ extension RatingView {
               .padding(4)
               .background(.ultraThinMaterial)
               .cornerRadius(20)
-              .border(Color.accentColor, width: stretchOfConfirm - baseSize)
+              .border(Color.accentColor, width: stretchOfConfirm - baseSizeConfirm)
               .cornerRadius(20)
               .offset(y:UIScreen.main.bounds.height / 2.4)
               .gesture(
                 DragGesture()
                     .onChanged { gesture in
-                        stretchOfConfirm = gesture.translation.width * 0.1 + baseSize
+                            stretchOfConfirm = gesture.translation.width * 0.1 + baseSizeConfirm
+                            
+                            stretchOfTemperature = baseSizeTemperature - 2.5 * gesture.translation.width
+                            if stretchOfTemperature < 20 {
+                                stretchOfTemperature = 20
+                            }
+                        
                     }
-                    .onEnded { gesture in
-                        stretchOfConfirm = baseSize
+                    .onEnded {gesture in
+                        stretchOfConfirm = baseSizeConfirm
+                        stretchOfTemperature = baseSizeTemperature
                     }
               )
     }
