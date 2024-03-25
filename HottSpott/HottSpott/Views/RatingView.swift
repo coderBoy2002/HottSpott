@@ -84,18 +84,23 @@ extension RatingView {
               .gesture(
                 DragGesture()
                     .onChanged { gesture in
-                            stretchOfConfirm = gesture.translation.width * 0.1 + baseSizeConfirm
+                        
+                            var distance_calc = sqrt(pow(gesture.translation.width ,2) + pow(gesture.translation.height, 2))
+                            stretchOfConfirm = distance_calc * 0.1 + baseSizeConfirm
                             
-                            stretchOfTemperature = baseSizeTemperature - 3 * gesture.translation.width
+                            stretchOfTemperature = baseSizeTemperature - 3 * distance_calc
                             if stretchOfTemperature < 20 {
                                 stretchOfTemperature = 20
                             }
                         
                     }
                     .onEnded {gesture in
+                        
+                        if stretchOfTemperature == 20 {
+                            vm.confirmedRating = true
+                        }
                         stretchOfConfirm = baseSizeConfirm
                         stretchOfTemperature = baseSizeTemperature
-                        vm.confirmedRating = true
                     }
               )
     }
