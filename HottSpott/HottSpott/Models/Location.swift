@@ -19,6 +19,11 @@ struct Location: Identifiable {
     var id: String {
         name + cityName
     }
+    
+    static func == (lhs: Location, rhs: Location) -> Bool {
+            return
+                lhs.id == rhs.id
+        }
 }
 
 

@@ -17,6 +17,19 @@ struct LocationsView: View {
         ZStack {
             Map(position: $vm.cameraPosition)
                 .ignoresSafeArea()
+            
+            VStack(spacing:0) {
+                Spacer()
+                
+                LocationPreviewView(location: vm.mapLocation)
+                    .shadow(color: Color.black.opacity(0.3), radius: 20)
+                    .padding()
+                // TODO: fix swipe bug here
+                    .transition(.asymmetric(
+                        insertion: .move(edge: .trailing),
+                        removal: .move(edge:.leading)))
+                    .environmentObject(vm)
+            }
         }
     }
 }
