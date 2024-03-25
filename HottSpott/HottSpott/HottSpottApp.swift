@@ -1,17 +1,21 @@
 //
-//  HottSpottApp.swift
-//  HottSpott
+//  MapAppApp.swift
+//  MapApp
 //
-//  Created by Patrick Hutecker on 3/24/24.
+//  Created by Ethan Ravelo on 3/18/24.
 //
 
 import SwiftUI
 
 @main
-struct HottSpottApp: App {
+struct MapAppApp: App {
+    
+    @StateObject private var vm = LocationsViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LocationsView()
+                .environmentObject(vm)
         }
     }
 }

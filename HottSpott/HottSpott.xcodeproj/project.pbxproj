@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7DA88FA32BB117A900E2EDDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DA88FA22BB117A900E2EDDB /* Assets.xcassets */; };
 		C1597E2E2BB1153300416992 /* HottSpottApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E2D2BB1153300416992 /* HottSpottApp.swift */; };
 		C1597E302BB1153300416992 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E2F2BB1153300416992 /* ContentView.swift */; };
-		C1597E322BB1153600416992 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1597E312BB1153600416992 /* Assets.xcassets */; };
 		C1597E362BB1153600416992 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1597E352BB1153600416992 /* Preview Assets.xcassets */; };
 		C1597E402BB1153700416992 /* HottSpottTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E3F2BB1153700416992 /* HottSpottTests.swift */; };
 		C1597E4A2BB1153700416992 /* HottSpottUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E492BB1153700416992 /* HottSpottUITests.swift */; };
@@ -42,10 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7DA88FA22BB117A900E2EDDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../Downloads/b6dc374-3b0b-6bdc-3b7f-f7ce4c005a_SwiftfulMapApp-Downloads/Assets.xcassets"; sourceTree = "<group>"; };
 		C1597E2A2BB1153300416992 /* HottSpott.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HottSpott.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1597E2D2BB1153300416992 /* HottSpottApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HottSpottApp.swift; sourceTree = "<group>"; };
 		C1597E2F2BB1153300416992 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		C1597E312BB1153600416992 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1597E332BB1153600416992 /* HottSpott.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HottSpott.entitlements; sourceTree = "<group>"; };
 		C1597E352BB1153600416992 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C1597E3B2BB1153700416992 /* HottSpottTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HottSpottTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,13 +111,13 @@
 		C1597E2C2BB1153300416992 /* HottSpott */ = {
 			isa = PBXGroup;
 			children = (
+				7DA88FA22BB117A900E2EDDB /* Assets.xcassets */,
 				C1597E582BB115AF00416992 /* DataServices */,
 				C1597E5B2BB115D400416992 /* ViewModels */,
 				C1597E5A2BB115C900416992 /* Views */,
 				C1597E592BB115C400416992 /* Models */,
 				C1597E2D2BB1153300416992 /* HottSpottApp.swift */,
 				C1597E2F2BB1153300416992 /* ContentView.swift */,
-				C1597E312BB1153600416992 /* Assets.xcassets */,
 				C1597E332BB1153600416992 /* HottSpott.entitlements */,
 				C1597E342BB1153600416992 /* Preview Content */,
 			);
@@ -290,7 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1597E362BB1153600416992 /* Preview Assets.xcassets in Resources */,
-				C1597E322BB1153600416992 /* Assets.xcassets in Resources */,
+				7DA88FA32BB117A900E2EDDB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
