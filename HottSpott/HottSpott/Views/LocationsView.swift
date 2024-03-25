@@ -15,39 +15,22 @@ struct LocationsView: View {
     
     var body: some View {
         ZStack {
-            
-            if !vm.confirmedRating {
-                Map(position: $vm.cameraPosition,
-                    interactionModes: .zoom)
-                    .ignoresSafeArea()
-                
-            }
-            else {
-                Map(position: $vm.cameraPosition)
-                    .ignoresSafeArea()
-            }
-
-            
-
+            mapLayer
+                .ignoresSafeArea()
             
             VStack(spacing:0) {
                 Spacer()
-                
-                LocationPreviewView(location: vm.mapLocation)
-                    .shadow(color: Color.black.opacity(0.3), radius: 20)
-                    .padding()
-                // TODO: fix swipe bug here
-                    .transition(.asymmetric(
-                        insertion: .move(edge: .trailing),
-                        removal: .move(edge:.leading)))
-                    .environmentObject(vm)
+                locationsPreviewStack
             }
+            
             if !vm.confirmedRating {
                 RatingView()
                     .environmentObject(vm)
             }
-            
         }
+            
+        
+        
     }
 }
 
@@ -56,5 +39,48 @@ struct LocationsView_Preview: PreviewProvider {
     static var previews: some View {
         LocationsView()
             .environmentObject(LocationsViewModel())
+    }
+}
+
+extension LocationsView {
+    private var mapLayer: some View {
+        if !vm.confirmedRating {
+            return Map(position: $vm.cameraPosition,
+                       interactionModes: .zoom) {
+                ForEach(vm.locations) { location in
+                    Annotation(location.name, coordinate: location.coordinates) {
+                        LocationMapAnnotationView()
+                            .scaleEffect(vm.mapLocation == location ? 1 : 0.7)
+                            .shadow(radius: 10)
+                            .onTapGesture {
+                                vm.showNextLocation(location: location)
+                            }
+                    }
+                }
+            }
+        }
+        return Map(position: $vm.cameraPosition) {
+            ForEach(vm.locations) { location in
+                Annotation(location.name, coordinate: location.coordinates) {
+                    LocationMapAnnotationView()
+                        .scaleEffect(vm.mapLocation == location ? 1 : 0.7)
+                        .shadow(radius: 10)
+                        .onTapGesture {
+                            vm.showNextLocation(location: location)
+                        }
+                }
+            }
+        }
+    }
+    
+    private var locationsPreviewStack: some View {
+        LocationPreviewView(location: vm.mapLocation)
+            .shadow(color: Color.black.opacity(0.3), radius: 20)
+            .padding()
+        // TODO: fix swipe bug here
+            .transition(.asymmetric(
+                insertion: .move(edge: .trailing),
+                removal: .move(edge:.leading)))
+            .environmentObject(vm)
     }
 }
