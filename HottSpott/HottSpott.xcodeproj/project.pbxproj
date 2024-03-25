@@ -14,6 +14,14 @@
 		C1597E402BB1153700416992 /* HottSpottTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E3F2BB1153700416992 /* HottSpottTests.swift */; };
 		C1597E4A2BB1153700416992 /* HottSpottUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E492BB1153700416992 /* HottSpottUITests.swift */; };
 		C1597E4C2BB1153700416992 /* HottSpottUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E4B2BB1153700416992 /* HottSpottUITestsLaunchTests.swift */; };
+		C1597E5D2BB1160400416992 /* LocationsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E5C2BB1160400416992 /* LocationsDataService.swift */; };
+		C1597E5F2BB1161A00416992 /* LocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E5E2BB1161A00416992 /* LocationsViewModel.swift */; };
+		C1597E612BB1162D00416992 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E602BB1162D00416992 /* LocationDetailView.swift */; };
+		C1597E632BB1164900416992 /* LocationMapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E622BB1164900416992 /* LocationMapAnnotationView.swift */; };
+		C1597E652BB1165A00416992 /* LocationPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E642BB1165A00416992 /* LocationPreviewView.swift */; };
+		C1597E672BB1166D00416992 /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E662BB1166D00416992 /* LocationsView.swift */; };
+		C1597E692BB1167B00416992 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E682BB1167B00416992 /* RatingView.swift */; };
+		C1597E6B2BB1169400416992 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E6A2BB1169400416992 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +53,14 @@
 		C1597E452BB1153700416992 /* HottSpottUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HottSpottUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1597E492BB1153700416992 /* HottSpottUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HottSpottUITests.swift; sourceTree = "<group>"; };
 		C1597E4B2BB1153700416992 /* HottSpottUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HottSpottUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C1597E5C2BB1160400416992 /* LocationsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsDataService.swift; sourceTree = "<group>"; };
+		C1597E5E2BB1161A00416992 /* LocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewModel.swift; sourceTree = "<group>"; };
+		C1597E602BB1162D00416992 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
+		C1597E622BB1164900416992 /* LocationMapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapAnnotationView.swift; sourceTree = "<group>"; };
+		C1597E642BB1165A00416992 /* LocationPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPreviewView.swift; sourceTree = "<group>"; };
+		C1597E662BB1166D00416992 /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
+		C1597E682BB1167B00416992 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		C1597E6A2BB1169400416992 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +111,10 @@
 		C1597E2C2BB1153300416992 /* HottSpott */ = {
 			isa = PBXGroup;
 			children = (
+				C1597E582BB115AF00416992 /* DataServices */,
+				C1597E5B2BB115D400416992 /* ViewModels */,
+				C1597E5A2BB115C900416992 /* Views */,
+				C1597E592BB115C400416992 /* Models */,
 				C1597E2D2BB1153300416992 /* HottSpottApp.swift */,
 				C1597E2F2BB1153300416992 /* ContentView.swift */,
 				C1597E312BB1153600416992 /* Assets.xcassets */,
@@ -127,6 +147,42 @@
 				C1597E4B2BB1153700416992 /* HottSpottUITestsLaunchTests.swift */,
 			);
 			path = HottSpottUITests;
+			sourceTree = "<group>";
+		};
+		C1597E582BB115AF00416992 /* DataServices */ = {
+			isa = PBXGroup;
+			children = (
+				C1597E5C2BB1160400416992 /* LocationsDataService.swift */,
+			);
+			path = DataServices;
+			sourceTree = "<group>";
+		};
+		C1597E592BB115C400416992 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C1597E6A2BB1169400416992 /* Location.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C1597E5A2BB115C900416992 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C1597E602BB1162D00416992 /* LocationDetailView.swift */,
+				C1597E622BB1164900416992 /* LocationMapAnnotationView.swift */,
+				C1597E642BB1165A00416992 /* LocationPreviewView.swift */,
+				C1597E662BB1166D00416992 /* LocationsView.swift */,
+				C1597E682BB1167B00416992 /* RatingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C1597E5B2BB115D400416992 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C1597E5E2BB1161A00416992 /* LocationsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +316,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1597E302BB1153300416992 /* ContentView.swift in Sources */,
+				C1597E632BB1164900416992 /* LocationMapAnnotationView.swift in Sources */,
+				C1597E6B2BB1169400416992 /* Location.swift in Sources */,
 				C1597E2E2BB1153300416992 /* HottSpottApp.swift in Sources */,
+				C1597E692BB1167B00416992 /* RatingView.swift in Sources */,
+				C1597E5D2BB1160400416992 /* LocationsDataService.swift in Sources */,
+				C1597E652BB1165A00416992 /* LocationPreviewView.swift in Sources */,
+				C1597E672BB1166D00416992 /* LocationsView.swift in Sources */,
+				C1597E612BB1162D00416992 /* LocationDetailView.swift in Sources */,
+				C1597E5F2BB1161A00416992 /* LocationsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
