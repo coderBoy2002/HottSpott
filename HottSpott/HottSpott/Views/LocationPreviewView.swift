@@ -52,7 +52,6 @@ extension LocationPreviewView {
             }
         }
         .padding(6)
-        .background(Color.white)
         .cornerRadius(10)
     }
     
