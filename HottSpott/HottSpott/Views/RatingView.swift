@@ -37,11 +37,11 @@ extension RatingView {
     private var temperatureSlider: some View {
         VStack {
             RoundedRectangle(cornerRadius: stretchOfTemperature)
-                       .fill(.red)
+                       .fill(.blue)
                        .ignoresSafeArea()
                        .frame(height: ratingLineHeight)
             RoundedRectangle(cornerRadius: stretchOfTemperature)
-                       .fill(.blue)
+                       .fill(.red)
                        .ignoresSafeArea()
                        .frame(height: UIScreen.main.bounds.height - ratingLineHeight)
         }
