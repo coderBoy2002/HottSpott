@@ -45,6 +45,7 @@ extension RatingView {
                        .ignoresSafeArea()
                        .frame(height: UIScreen.main.bounds.height - ratingLineHeight)
         }
+        .background(.ultraThinMaterial)
         .opacity(0.6)
         .gesture(
             DragGesture()
