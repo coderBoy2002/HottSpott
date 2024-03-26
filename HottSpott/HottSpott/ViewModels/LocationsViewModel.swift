@@ -19,7 +19,7 @@ class LocationsViewModel: ObservableObject {
     @Published var lastLocation: Location
     
     @Published var cameraPosition: MapCameraPosition = MapCameraPosition.region(MKCoordinateRegion())
-    let mapSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+    let mapSpan = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
     
     @Published var confirmedRating: Bool = false
     
