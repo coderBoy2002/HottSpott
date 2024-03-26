@@ -13,10 +13,10 @@ struct LocationMapAnnotationView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Image(systemName: "map.circle.fill")
+            Image(systemName: "eye.trianglebadge.exclamationmark.fill")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 30, height: 30)
+                .frame(width: 50, height: 30)
                 .font(.headline)
                 .foregroundColor(.white)
                 .padding(6)

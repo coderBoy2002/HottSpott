@@ -15,20 +15,21 @@ struct LocationPreviewView: View {
     
     var body: some View {
         HStack(alignment: .bottom, spacing: 0) {
-            VStack(alignment: .leading, spacing: 16) {
+            HStack(alignment: .bottom, spacing: 16) {
                 imageSection
                 titleSection
             }
         }
         .padding(20)
         .background(
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 20)
             .fill(.ultraThinMaterial)
+            .background(Color("AccentColor"))
+            .cornerRadius(20)
             .offset(y: 65)
         )
-        .cornerRadius(10)   
-        .frame(width: 250, height: 200)
-        
+        .cornerRadius(20)
+        .frame(width: 310, height: 180)
     }
 }
 
@@ -43,16 +44,17 @@ struct LocationPreviewView: View {
 extension LocationPreviewView {
     private var imageSection: some View {
         ZStack {
-            if let imageName = location.imageNames.first {
-                Image(imageName)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 100, height: 100)
-                    .cornerRadius(10)
-            }
+            Image(systemName: "eye.trianglebadge.exclamationmark.fill")
+                .resizable()
+                .frame(width: 150, height: 80)
+                .padding(6)
+                .scaledToFill()
+                .cornerRadius(10)
         }
-        .padding(6)
-        .cornerRadius(10)
+        .padding(7)
+        .background(Color.secondary)
+        .cornerRadius(60)
+        
     }
     
     private var titleSection: some View {
