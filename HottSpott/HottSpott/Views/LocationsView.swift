@@ -8,7 +8,6 @@
 import SwiftUI
 import MapKit
 
-
 struct LocationsView: View {
     
     @EnvironmentObject private var vm: LocationsViewModel
@@ -28,37 +27,23 @@ struct LocationsView: View {
                     .environmentObject(vm)
             }
         }
-            
-        
-        
     }
 }
 
-
-struct LocationsView_Preview: PreviewProvider {
-    static var previews: some View {
-        LocationsView()
-            .environmentObject(LocationsViewModel())
-    }
+#Preview {
+    LocationsView()
+        .environmentObject(LocationsViewModel())
 }
 
 extension LocationsView {
-    private var mapLayer: some View {
+    private var interactionModes: MapInteractionModes {
         if !vm.confirmedRating {
-            return Map(position: $vm.cameraPosition,
-                       interactionModes: .zoom) {
-                ForEach(vm.locations) { location in
-                    Annotation(location.name, coordinate: location.coordinates) {
-                        LocationMapAnnotationView()
-                            .scaleEffect(vm.mapLocation == location ? 1 : 0.7)
-                            .shadow(radius: 10)
-                            .onTapGesture {
-                            }
-                    }
-                }
-            }
+            return .zoom
         }
-        return Map(position: $vm.cameraPosition) {
+        return .all
+    }
+    private var mapLayer: some View {
+        return Map(position: $vm.cameraPosition, interactionModes: interactionModes) {
             ForEach(vm.locations) { location in
                 Annotation(location.name, coordinate: location.coordinates) {
                     LocationMapAnnotationView()
@@ -72,14 +57,19 @@ extension LocationsView {
         }
     }
     
+    /*
     private var locationsPreviewStackHelper: some View {
         LocationPreviewView(location: vm.mapLocation)
             .shadow(color: Color.black.opacity(0.3), radius: 20)
             .padding()
         // TODO: fix swipe bug here
             .environmentObject(vm)
+            .transition(.asymmetric(
+                insertion: .move(edge: .leading),
+                removal: .move(edge:.trailing)))
         
     }
+     */
     
     private var locationsPreviewStack: some View {
         HStack {
@@ -98,18 +88,14 @@ extension LocationsView {
                             vm.checkSwipeConditions()
                         }
                 )
-                .transition(.asymmetric(
-                    insertion: .move(edge: .leading),
-                    removal: .move(edge:.trailing)))
             Spacer()
             if abs(vm.swipeAmount) > 0 {
                 LocationPreviewView(location: vm.nextLocation)
                     .shadow(color: Color.black.opacity(0.3), radius: 20)
                     .padding()
-                // TODO: fix swipe bug here
-                    .environmentObject(vm)
                     .offset(x: 50 - abs(vm.swipeAmount))
             }
+            
         }
     }
 }

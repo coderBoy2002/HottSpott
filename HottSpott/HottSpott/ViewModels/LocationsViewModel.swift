@@ -14,13 +14,7 @@ class LocationsViewModel: ObservableObject {
     // All loaded locations
     @Published var locations: [Location]
     
-    // Current map location
-    @Published var mapLocation: Location {
-        didSet {
-            updateMapLocation(location: mapLocation)
-        }
-    }
-    
+    @Published var mapLocation: Location
     @Published var nextLocation: Location
     @Published var lastLocation: Location
     
@@ -37,22 +31,15 @@ class LocationsViewModel: ObservableObject {
         self.locations = locations
         self.mapLocation = locations.first!
         self.nextLocation = locations.first!
-        self.lastLocation = locations.first!
-        self.updateMapLocation(location: locations.first!)
-    }
-    
-    private func updateMapLocation(location: Location) {
-        withAnimation(.easeInOut) {
-            cameraPosition = MapCameraPosition.region(MKCoordinateRegion(
-                center: location.coordinates,
-                span: mapSpan))
-            nextLocation = getNextLocation()
-            lastLocation = getLastLocation()
-        }
+        self.lastLocation = locations.last!
+        self.changeLocation(location: locations.first!)
     }
     
     func changeLocation(location: Location) {
-        withAnimation(.easeInOut) {
+        withAnimation(.spring) {
+            cameraPosition = MapCameraPosition.region(MKCoordinateRegion(
+                center: location.coordinates,
+                span: mapSpan))
             mapLocation = location
             nextLocation = getNextLocation()
             lastLocation = getLastLocation()
