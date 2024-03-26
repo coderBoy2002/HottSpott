@@ -18,7 +18,6 @@ struct RatingView: View {
     @State var stretchOfConfirm: CGFloat = 40
     @State var stretchOfTemperature: CGFloat = 250
     @State var isMovingScale: Bool = false
-    @State var failedGesture: Bool = false
     
     let spacingFactor : CGFloat = 75
     
@@ -60,7 +59,7 @@ extension RatingView {
                         }
                     }
                     else {
-                        if abs(gesture.location.y - ratingLineHeight) < 10 {
+                        if abs(gesture.location.y - ratingLineHeight) < 60 {
                             isMovingScale = true
                         }
                     }
