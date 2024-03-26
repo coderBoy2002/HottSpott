@@ -21,15 +21,23 @@ class LocationsViewModel: ObservableObject {
         }
     }
     
+    @Published var nextLocation: Location
+    @Published var lastLocation: Location
+    
     @Published var cameraPosition: MapCameraPosition = MapCameraPosition.region(MKCoordinateRegion())
     let mapSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
     
     @Published var confirmedRating: Bool = false
     
+    @Published var swipeAmount: CGFloat = 0
+    let swipeCutOff: CGFloat = 50
+    
     init() {
         let locations = LocationsDataService.locations
         self.locations = locations
         self.mapLocation = locations.first!
+        self.nextLocation = locations.first!
+        self.lastLocation = locations.first!
         self.updateMapLocation(location: locations.first!)
     }
     
@@ -38,55 +46,60 @@ class LocationsViewModel: ObservableObject {
             cameraPosition = MapCameraPosition.region(MKCoordinateRegion(
                 center: location.coordinates,
                 span: mapSpan))
+            nextLocation = getNextLocation()
+            lastLocation = getLastLocation()
         }
     }
     
-    func showNextLocation(location: Location) {
+    func changeLocation(location: Location) {
         withAnimation(.easeInOut) {
             mapLocation = location
+            nextLocation = getNextLocation()
+            lastLocation = getLastLocation()
         }
     }
     
-    func nextLocation() {
+    func getNextLocation() -> Location {
         // Get the current index
-        guard let currentIndex = locations.firstIndex(where: { $0 == mapLocation }) else { print("Could not find current index in locations array")
-            return
+        guard let currentIndex = locations.firstIndex(where: { $0 == mapLocation }) else {
+            return locations.first!
         }
         
         // Check if currentIndex is valid
         let nextIndex = currentIndex + 1
         guard locations.indices.contains(nextIndex) else {
-            // Next index is NOT valid
-            // Restart from 0
-            guard let firstLocation = locations.first else { return }
-            showNextLocation(location: firstLocation)
-            return
+            return locations.first!
         }
         
         // Next index IS valid
         let nextLocation = locations[nextIndex]
-        showNextLocation(location: nextLocation)
+        return nextLocation
     }
     
-    func lastLocation() {
+    func getLastLocation() -> Location {
         // Get the current index
-        guard let currentIndex = locations.firstIndex(where: { $0 == mapLocation }) else { print("Could not find current index in locations array")
-            return
+        guard let currentIndex = locations.firstIndex(where: { $0 == mapLocation }) else {
+            return locations.first!
         }
         
         // Check if currentIndex is valid
         let nextIndex = currentIndex - 1
         guard locations.indices.contains(nextIndex) else {
-            // Next index is NOT valid
-            // Restart from 0
-            guard let firstLocation = locations.last else { return }
-            showNextLocation(location: firstLocation)
-            return
+            return locations.last!
         }
         
         // Next index IS valid
         let nextLocation = locations[nextIndex]
-        showNextLocation(location: nextLocation)
+        return nextLocation
+    }
+    
+    func checkSwipeConditions() {
+        if swipeAmount > swipeCutOff {
+            changeLocation(location: lastLocation)
+        } else if swipeAmount < -swipeCutOff {
+            changeLocation(location: nextLocation)
+        }
+        swipeAmount = 0
     }
 
     

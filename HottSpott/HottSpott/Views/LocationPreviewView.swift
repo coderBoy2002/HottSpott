@@ -13,9 +13,6 @@ struct LocationPreviewView: View {
     
     @EnvironmentObject private var vm: LocationsViewModel
     
-    @State var swipeAmount: CGFloat = 0
-    let swipeCutOff: CGFloat = 50
-    
     var body: some View {
         HStack(alignment: .bottom, spacing: 0) {
             VStack(alignment: .leading, spacing: 16) {
@@ -29,26 +26,7 @@ struct LocationPreviewView: View {
             .fill(.ultraThinMaterial)
             .offset(y: 65)
         )
-        .cornerRadius(10)
-        .offset(x: swipeAmount)
-        .gesture(
-          DragGesture()
-              .onChanged { gesture in
-                      swipeAmount = gesture.translation.width
-                    
-                  
-              }
-              .onEnded { gesture in
-                  if swipeAmount > swipeCutOff {
-                      vm.lastLocation()
-                  } else if swipeAmount < -swipeCutOff {
-                      vm.nextLocation()
-                  }
-                  swipeAmount = 0
-              }
-        )
-        
-          
+        .cornerRadius(10)        
         
     }
 }
