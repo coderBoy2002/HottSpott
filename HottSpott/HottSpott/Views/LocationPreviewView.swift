@@ -26,14 +26,14 @@ struct LocationPreviewView: View {
             .fill(.ultraThinMaterial)
             .offset(y: 65)
         )
-        .cornerRadius(10)        
+        .cornerRadius(10)   
+        .frame(width: 250, height: 200)
         
     }
 }
 
 #Preview {
     ZStack {
-        Color.blue.ignoresSafeArea()
         
         LocationPreviewView(location: LocationsDataService.locations.first!)
             .padding()

@@ -57,45 +57,37 @@ extension LocationsView {
         }
     }
     
-    /*
-    private var locationsPreviewStackHelper: some View {
-        LocationPreviewView(location: vm.mapLocation)
+    private func mainPreview(location: Location) -> some View {
+        return LocationPreviewView(location: location)
             .shadow(color: Color.black.opacity(0.3), radius: 20)
             .padding()
-        // TODO: fix swipe bug here
             .environmentObject(vm)
-            .transition(.asymmetric(
-                insertion: .move(edge: .leading),
-                removal: .move(edge:.trailing)))
-        
     }
-     */
     
     private var locationsPreviewStack: some View {
-        HStack {
-            LocationPreviewView(location: vm.mapLocation)
-                .shadow(color: Color.black.opacity(0.3), radius: 20)
-                .padding()
-            // TODO: fix swipe bug here
-                .environmentObject(vm)
+        ZStack {
+            mainPreview(location: vm.mapLocation)
                 .offset(x: vm.swipeAmount)
                 .gesture(
                     DragGesture()
                         .onChanged { gesture in
-                            vm.swipeAmount = gesture.translation.width
+                            if vm.lastCord != 0 {
+                                vm.swipeAmount += gesture.location.x-vm.lastCord
+                            }
+                            vm.lastCord = gesture.location.x
                         }
                         .onEnded { gesture in
                             vm.checkSwipeConditions()
                         }
                 )
-            Spacer()
-            if abs(vm.swipeAmount) > 0 {
-                LocationPreviewView(location: vm.nextLocation)
-                    .shadow(color: Color.black.opacity(0.3), radius: 20)
-                    .padding()
-                    .offset(x: 50 - abs(vm.swipeAmount))
+            if vm.swipeAmount > 75 {
+                mainPreview(location: vm.lastLocation)
+                    .offset(x: -UIScreen.main.bounds.width+vm.swipeAmount)
             }
-            
+            else if vm.swipeAmount < -76 {
+                mainPreview(location: vm.nextLocation)
+                    .offset(x:UIScreen.main.bounds.width+vm.swipeAmount)
+            }
         }
     }
 }

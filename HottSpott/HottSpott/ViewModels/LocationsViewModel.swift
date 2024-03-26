@@ -24,6 +24,7 @@ class LocationsViewModel: ObservableObject {
     @Published var confirmedRating: Bool = false
     
     @Published var swipeAmount: CGFloat = 0
+    @Published var lastCord: CGFloat = 0
     let swipeCutOff: CGFloat = 50
     
     init() {
@@ -36,14 +37,14 @@ class LocationsViewModel: ObservableObject {
     }
     
     func changeLocation(location: Location) {
-        withAnimation(.spring) {
+        withAnimation(.easeInOut) {
             cameraPosition = MapCameraPosition.region(MKCoordinateRegion(
                 center: location.coordinates,
                 span: mapSpan))
+        }
             mapLocation = location
             nextLocation = getNextLocation()
             lastLocation = getLastLocation()
-        }
     }
     
     func getNextLocation() -> Location {
@@ -87,6 +88,7 @@ class LocationsViewModel: ObservableObject {
             changeLocation(location: nextLocation)
         }
         swipeAmount = 0
+        lastCord = 0
     }
 
     
