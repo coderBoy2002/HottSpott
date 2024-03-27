@@ -31,6 +31,7 @@ struct RatingView: View {
 
 #Preview {
     RatingView()
+        .environmentObject(LocationsViewModel())
 }
 
 extension RatingView {
