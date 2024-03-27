@@ -29,27 +29,10 @@ struct SwipeView: View {
                 .gesture(
                     DragGesture()
                         .onChanged { gesture in
-                            /*if vm.setSwipeFactor &&
-                                !vm.hasSetSwipeFactor {
-                                let curX: CGFloat = gesture.location.x
-                                print(curX)
-                                print(vm.startX)
-                                print(screenWidth / 2)
-                                if curX >=  vm.startX && curX > screenWidth / 2  {
-                                    vm.swipeFactor += (screenWidth/2)/(screenWidth - curX)
-                                }
-                                else if curX < vm.startX && curX < screenWidth / 2 {
-                                    vm.swipeFactor += (screenWidth/2)/curX
-                                }
-                                print(vm.swipeFactor)
-                                vm.hasSetSwipeFactor = true
-                                
-                            }*/
                             if vm.startX != -100 {
                                 let curX: CGFloat = gesture.location.x
                                 if  curX >  vm.startX {
                                     if curX > screenWidth / 2 {
-                                        
                                         if vm.startX > screenWidth / 2 + swipeFactorAdjustment {
                                             vm.swipeFactor = 2.2 + 0.025*(abs(vm.startX - screenWidth/2 + swipeFactorAdjustment))
                                         }
