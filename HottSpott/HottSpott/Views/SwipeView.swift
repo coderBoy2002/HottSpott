@@ -20,6 +20,7 @@ struct SwipeView: View {
     
     let minPaddingForSwipe: CGFloat = 0
     let totalSwipe: CGFloat = 300
+    let screenWidth: CGFloat = UIScreen.main.bounds.width
 
     var body: some View {
         ZStack {
@@ -28,20 +29,37 @@ struct SwipeView: View {
                 .gesture(
                     DragGesture()
                         .onChanged { gesture in
+                            /*if vm.setSwipeFactor &&
+                                !vm.hasSetSwipeFactor {
+                                let curX: CGFloat = gesture.location.x
+                                print(curX)
+                                print(vm.startX)
+                                print(screenWidth / 2)
+                                if curX >=  vm.startX && curX > screenWidth / 2  {
+                                    vm.swipeFactor += (screenWidth/2)/(screenWidth - curX)
+                                }
+                                else if curX < vm.startX && curX < screenWidth / 2 {
+                                    vm.swipeFactor += (screenWidth/2)/curX
+                                }
+                                print(vm.swipeFactor)
+                                vm.hasSetSwipeFactor = true
+                                
+                            }*/
                             if vm.startX != -100 {
                                 let curX: CGFloat = gesture.location.x
                                 if  curX >  vm.startX {
-                                    if curX > UIScreen.main.bounds.width / 2 {
-                                        vm.swipeAmount = vm.swipeFactor * ( curX - max(UIScreen.main.bounds.width / 2,vm.startX))
-                                        
+                                    if curX > screenWidth / 2 {
+                                        vm.swipeAmount = vm.swipeFactor * ( curX - max(screenWidth / 2,vm.startX))
+                                        print(vm.swipeAmount)
                                     }
                                 }
-                                else if curX < UIScreen.main.bounds.width / 2 {
-                                    vm.swipeAmount = vm.swipeFactor * (curX - min(UIScreen.main.bounds.width / 2,vm.startX))
+                                else if curX < screenWidth / 2 {
+                                    vm.swipeAmount = vm.swipeFactor * (curX - min(screenWidth / 2,vm.startX))
                                 }
                                 
                             }
                             else {
+                                vm.swipeFactor = 2.2
                                 vm.startX = gesture.location.x
                             }
                         }
@@ -51,11 +69,11 @@ struct SwipeView: View {
                 )
             if vm.swipeAmount > minPaddingForSwipe {
                 mainPreview(location: vm.lastLocation)
-                    .offset(x: -UIScreen.main.bounds.width+vm.swipeAmount)
+                    .offset(x: -screenWidth+vm.swipeAmount)
             }
             else if vm.swipeAmount < -minPaddingForSwipe {
                 mainPreview(location: vm.nextLocation)
-                    .offset(x:UIScreen.main.bounds.width+vm.swipeAmount)
+                    .offset(x:screenWidth+vm.swipeAmount)
             }
         }
     }
