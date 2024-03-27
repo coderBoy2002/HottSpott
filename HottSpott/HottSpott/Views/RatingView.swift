@@ -31,6 +31,7 @@ struct RatingView: View {
 
 #Preview {
     RatingView()
+        .environmentObject(LocationsViewModel())
 }
 
 extension RatingView {
@@ -45,6 +46,7 @@ extension RatingView {
                        .ignoresSafeArea()
                        .frame(height: UIScreen.main.bounds.height - ratingLineHeight)
         }
+        .background(.thinMaterial)
         .opacity(0.6)
         .gesture(
             DragGesture()

@@ -24,8 +24,9 @@ class LocationsViewModel: ObservableObject {
     @Published var confirmedRating: Bool = false
     
     @Published var swipeAmount: CGFloat = 0
-    @Published var lastCord: CGFloat = 0
-    let swipeCutOff: CGFloat = 20
+    @Published var swipeFactor: CGFloat = 2.2
+    @Published var startX: CGFloat = -100
+    let swipeCutOff: CGFloat = UIScreen.main.bounds.width / 2.8
     
     init() {
         let locations = LocationsDataService.locations
@@ -88,7 +89,9 @@ class LocationsViewModel: ObservableObject {
             changeLocation(location: nextLocation)
         }
         swipeAmount = 0
-        lastCord = 0
+        swipeFactor = 2.2
+        startX = -100
+
     }
 
     

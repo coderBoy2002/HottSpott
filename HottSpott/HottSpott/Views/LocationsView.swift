@@ -19,7 +19,8 @@ struct LocationsView: View {
             
             VStack(spacing:0) {
                 Spacer()
-                locationsPreviewStack
+                SwipeView()
+                    .environmentObject(vm)
             }
             
             if !vm.confirmedRating {
@@ -53,40 +54,6 @@ extension LocationsView {
                             vm.changeLocation(location: location)
                         }
                 }
-            }
-        }
-    }
-    
-    private func mainPreview(location: Location) -> some View {
-        return LocationPreviewView(location: location)
-            .shadow(color: Color.black.opacity(0.3), radius: 20)
-            .padding()
-            .environmentObject(vm)
-    }
-    
-    private var locationsPreviewStack: some View {
-        ZStack {
-            mainPreview(location: vm.mapLocation)
-                .offset(x: vm.swipeAmount)
-                .gesture(
-                    DragGesture()
-                        .onChanged { gesture in
-                            if vm.lastCord != 0 {
-                                vm.swipeAmount += gesture.location.x-vm.lastCord
-                            }
-                            vm.lastCord = gesture.location.x
-                        }
-                        .onEnded { gesture in
-                            vm.checkSwipeConditions()
-                        }
-                )
-            if vm.swipeAmount > 75 {
-                mainPreview(location: vm.lastLocation)
-                    .offset(x: -UIScreen.main.bounds.width+vm.swipeAmount)
-            }
-            else if vm.swipeAmount < -75 {
-                mainPreview(location: vm.nextLocation)
-                    .offset(x:UIScreen.main.bounds.width+vm.swipeAmount)
             }
         }
     }

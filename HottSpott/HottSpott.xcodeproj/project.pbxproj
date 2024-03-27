@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7DA88FA32BB117A900E2EDDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DA88FA22BB117A900E2EDDB /* Assets.xcassets */; };
+		C13C01222BB3B97A00F0C4C8 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13C01212BB3B97A00F0C4C8 /* SwipeView.swift */; };
 		C1597E2E2BB1153300416992 /* HottSpottApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E2D2BB1153300416992 /* HottSpottApp.swift */; };
 		C1597E302BB1153300416992 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E2F2BB1153300416992 /* ContentView.swift */; };
 		C1597E362BB1153600416992 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1597E352BB1153600416992 /* Preview Assets.xcassets */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		7DA88FA22BB117A900E2EDDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../Downloads/b6dc374-3b0b-6bdc-3b7f-f7ce4c005a_SwiftfulMapApp-Downloads/Assets.xcassets"; sourceTree = "<group>"; };
+		C13C01212BB3B97A00F0C4C8 /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
 		C1597E2A2BB1153300416992 /* HottSpott.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HottSpott.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1597E2D2BB1153300416992 /* HottSpottApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HottSpottApp.swift; sourceTree = "<group>"; };
 		C1597E2F2BB1153300416992 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				C1597E642BB1165A00416992 /* LocationPreviewView.swift */,
 				C1597E662BB1166D00416992 /* LocationsView.swift */,
 				C1597E682BB1167B00416992 /* RatingView.swift */,
+				C13C01212BB3B97A00F0C4C8 /* SwipeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				C1597E302BB1153300416992 /* ContentView.swift in Sources */,
 				C1BC81F72BB1352900C18908 /* AnimatableVector.swift in Sources */,
 				C1597E632BB1164900416992 /* LocationMapAnnotationView.swift in Sources */,
+				C13C01222BB3B97A00F0C4C8 /* SwipeView.swift in Sources */,
 				C1597E6B2BB1169400416992 /* Location.swift in Sources */,
 				C1597E2E2BB1153300416992 /* HottSpottApp.swift in Sources */,
 				C1BC81FD2BB13A1200C18908 /* MorphingCircle.swift in Sources */,
