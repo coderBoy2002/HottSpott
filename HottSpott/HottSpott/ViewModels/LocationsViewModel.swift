@@ -25,7 +25,7 @@ class LocationsViewModel: ObservableObject {
     
     @Published var swipeAmount: CGFloat = 0
     @Published var lastCord: CGFloat = 0
-    let swipeCutOff: CGFloat = 50
+    let swipeCutOff: CGFloat = 20
     
     init() {
         let locations = LocationsDataService.locations

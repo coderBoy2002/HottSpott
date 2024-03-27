@@ -84,7 +84,7 @@ extension LocationsView {
                 mainPreview(location: vm.lastLocation)
                     .offset(x: -UIScreen.main.bounds.width+vm.swipeAmount)
             }
-            else if vm.swipeAmount < -76 {
+            else if vm.swipeAmount < -75 {
                 mainPreview(location: vm.nextLocation)
                     .offset(x:UIScreen.main.bounds.width+vm.swipeAmount)
             }
