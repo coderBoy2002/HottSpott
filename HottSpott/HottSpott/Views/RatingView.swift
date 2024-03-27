@@ -37,14 +37,21 @@ struct RatingView: View {
 extension RatingView {
     private var temperatureSlider: some View {
         VStack {
-            RoundedRectangle(cornerRadius: stretchOfTemperature)
-                       .fill(.blue)
-                       .ignoresSafeArea()
-                       .frame(height: ratingLineHeight)
-            RoundedRectangle(cornerRadius: stretchOfTemperature)
-                       .fill(.red)
-                       .ignoresSafeArea()
-                       .frame(height: UIScreen.main.bounds.height - ratingLineHeight)
+            ZStack {
+                RoundedRectangle(cornerRadius: stretchOfTemperature)
+                    .fill(.blue)
+                    .ignoresSafeArea()
+                    .frame(height: ratingLineHeight)
+                MorphingCircleTexture(color: .blue)
+                    .offset(y: -UIScreen.main.bounds.height+ratingLineHeight)
+            }
+            ZStack {
+                RoundedRectangle(cornerRadius: stretchOfTemperature)
+                    .fill(.red)
+                    .ignoresSafeArea()
+                    .frame(height: UIScreen.main.bounds.height - ratingLineHeight)
+                MorphingCircleTexture(color: .red)
+            }
         }
         .background(.thinMaterial)
         .opacity(0.6)

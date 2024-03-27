@@ -85,5 +85,5 @@ struct MorphingCircle: View & Identifiable & Hashable {
 
 
 #Preview {
-    MorphingCircle()
+    MorphingCircle(150, morphingRange: 30, color: .red, points: 4,  duration: 5.0, secting: 2)
 }
