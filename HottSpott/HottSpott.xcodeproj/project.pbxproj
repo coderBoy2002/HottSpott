@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7DA88FA32BB117A900E2EDDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DA88FA22BB117A900E2EDDB /* Assets.xcassets */; };
+		7DD580C92BB3CA5C00466773 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD580C82BB3CA5C00466773 /* Rating.swift */; };
 		C13C01222BB3B97A00F0C4C8 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13C01212BB3B97A00F0C4C8 /* SwipeView.swift */; };
 		C13C01252BB3D30B00F0C4C8 /* MorphingCircleTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13C01242BB3D30B00F0C4C8 /* MorphingCircleTexture.swift */; };
 		C1597E2E2BB1153300416992 /* HottSpottApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E2D2BB1153300416992 /* HottSpottApp.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		7DA88FA22BB117A900E2EDDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../Downloads/b6dc374-3b0b-6bdc-3b7f-f7ce4c005a_SwiftfulMapApp-Downloads/Assets.xcassets"; sourceTree = "<group>"; };
+		7DD580C82BB3CA5C00466773 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		C13C01212BB3B97A00F0C4C8 /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
 		C13C01242BB3D30B00F0C4C8 /* MorphingCircleTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorphingCircleTexture.swift; sourceTree = "<group>"; };
 		C1597E2A2BB1153300416992 /* HottSpott.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HottSpott.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +179,7 @@
 				C1BC81F82BB1398C00C18908 /* CG.swift */,
 				C1BC81FA2BB139B200C18908 /* MorphingCircleShape.swift */,
 				C1BC81FC2BB13A1200C18908 /* MorphingCircle.swift */,
+				7DD580C82BB3CA5C00466773 /* Rating.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				C1597E692BB1167B00416992 /* RatingView.swift in Sources */,
 				C1597E5D2BB1160400416992 /* LocationsDataService.swift in Sources */,
 				C1597E652BB1165A00416992 /* LocationPreviewView.swift in Sources */,
+				7DD580C92BB3CA5C00466773 /* Rating.swift in Sources */,
 				C1597E672BB1166D00416992 /* LocationsView.swift in Sources */,
 				C13C01252BB3D30B00F0C4C8 /* MorphingCircleTexture.swift in Sources */,
 				C1597E612BB1162D00416992 /* LocationDetailView.swift in Sources */,

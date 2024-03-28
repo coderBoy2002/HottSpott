@@ -10,15 +10,15 @@ import SwiftUI
 struct MorphingCircleTexture: View {
     
     @State var color: Color
-    @State private var imageOffsets: [CGPoint] = Array(repeating: CGPoint.zero, count: 200)
+    @State private var imageOffsets: [CGPoint] = Array(repeating: CGPoint.zero, count: 500)
     @State private var showingOverlay = true
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
     
     var body: some View {
         ZStack {
-            ForEach(0..<200) { index in
-                MorphingCircle(100, morphingRange: 30, color: color, points: 4,  duration: 5.0, secting: 2)
+            ForEach(0..<500) { index in
+                MorphingCircle(130, morphingRange: 30, color: color, points: 4,  duration: 5.0, secting: 2)
                     .position(
                         x: imageOffsets[index].x,
                         y: imageOffsets[index].y
@@ -27,7 +27,7 @@ struct MorphingCircleTexture: View {
         }
         .ignoresSafeArea()
         .onAppear {
-            for index in 0..<200 {
+            for index in 0..<500 {
                 imageOffsets[index] = CGPoint(x: .random(in: 0..<screenWidth), y: .random(in: 0..<screenHeight))
             }
         }
@@ -45,8 +45,8 @@ struct OverlayView: View {
     var body: some View {
         ZStack {
             Color.clear
-            ForEach(0..<200) { index in
-                MorphingCircle(100, morphingRange: 30, color: color, points: 4,  duration: 5.0, secting: 2)
+            ForEach(0..<500) { index in
+                MorphingCircle(130, morphingRange: 30, color: color, points: 4,  duration: 5.0, secting: 2)
                     .position(
                         x: imageOffsets[index].x,
                         y: imageOffsets[index].y
