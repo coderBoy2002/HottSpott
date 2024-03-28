@@ -11,19 +11,22 @@ struct MorphingCircleTexture: View {
     
     @State var size: CGFloat
     @State var numCircles: Int
+    @State var morphingRange: CGFloat
+    @State var points: Int
+    @State var duration: Double
+    @State var secting: Double
     @State var color: Color
     @State private var imageOffsets: [CGPoint]
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
     
-    let morphingRange: CGFloat = 30
-    let points: Int = 4
-    let duration: Double = 5.0
-    let secting: Double = 2
-    
-    init(size: CGFloat, numCircles: Int, color: Color) {
+    init(size: CGFloat, numCircles: Int, morphingRange: CGFloat, points: Int, duration: Double, secting: Double, color: Color) {
         self.size = size
         self.numCircles = numCircles
+        self.morphingRange = morphingRange
+        self.points = points
+        self.duration = duration
+        self.secting = secting
         self.color = color
         self.imageOffsets = Array(repeating: CGPoint.zero, count: numCircles)
     }
@@ -48,5 +51,5 @@ struct MorphingCircleTexture: View {
 }
 
 #Preview {
-    MorphingCircleTexture(size: 120, numCircles: 10, color: Color.blue)
+    MorphingCircleTexture(size: 100, numCircles: 70, morphingRange: 30, points: 10, duration: 5.0, secting: 2, color: Color.blue)
 }
