@@ -28,19 +28,27 @@ struct MorphingCircleTexture: View {
 }
 
 extension MorphingCircleTexture {
-    private var numCirclesBottom: Int {
-        2
-    }
-    private var imageOffsetsBottom: [CGPoint] {
-        var imageOffsets: [CGPoint] = Array(repeating: CGPoint.zero, count: numCirclesBottom)
-        for index in 0..<numCirclesBottom {
+    
+    private func getPartitions(numCircles: Int) -> [CGFloat] {
+        let stepSize: CGFloat = screenHeight / CGFloat(numCircles)
+        var imageOffsets: [CGPoint] = Array(repeating: CGPoint.zero, count: numCircles)
+        for index in 0..<numCircles {
             imageOffsets[index] = CGPoint(
                 x: .random(in: 0..<screenWidth),
-                y: .random(in: 0..<screenHeight)
+                y:  stepSize / 2 + index * stepSize * (1 + .random(in: 0..<0.5))
             )
         }
         return imageOffsets
     }
+    
+    private var numCirclesBottom: Int {
+        2
+    }
+    
+    private var imageOffsetsBottom: [CGPoint] {
+        return getPartitions(numCirclesBottom)
+    }
+    
     private var bottomLayer: some View {
 
         return MorphingCircleGroup(size: 500, numCircles: numCirclesBottom, morphingRange: 60, points: 8, duration: 5.0, secting: 2, color: color, imageOffsets: imageOffsetsBottom)
