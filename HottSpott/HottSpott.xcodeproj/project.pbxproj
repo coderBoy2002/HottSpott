@@ -19,12 +19,12 @@
 		C1597E4C2BB1153700416992 /* HottSpottUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E4B2BB1153700416992 /* HottSpottUITestsLaunchTests.swift */; };
 		C1597E5D2BB1160400416992 /* LocationsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E5C2BB1160400416992 /* LocationsDataService.swift */; };
 		C1597E5F2BB1161A00416992 /* LocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E5E2BB1161A00416992 /* LocationsViewModel.swift */; };
-		C1597E612BB1162D00416992 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E602BB1162D00416992 /* LocationDetailView.swift */; };
 		C1597E632BB1164900416992 /* LocationMapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E622BB1164900416992 /* LocationMapAnnotationView.swift */; };
 		C1597E652BB1165A00416992 /* LocationPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E642BB1165A00416992 /* LocationPreviewView.swift */; };
 		C1597E672BB1166D00416992 /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E662BB1166D00416992 /* LocationsView.swift */; };
 		C1597E692BB1167B00416992 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E682BB1167B00416992 /* RatingView.swift */; };
 		C1597E6B2BB1169400416992 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1597E6A2BB1169400416992 /* Location.swift */; };
+		C1A5ACB22BB6140A003062EB /* MorphingCircleGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A5ACB12BB6140A003062EB /* MorphingCircleGroup.swift */; };
 		C1BC81F72BB1352900C18908 /* AnimatableVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BC81F62BB1352900C18908 /* AnimatableVector.swift */; };
 		C1BC81F92BB1398C00C18908 /* CG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BC81F82BB1398C00C18908 /* CG.swift */; };
 		C1BC81FB2BB139B200C18908 /* MorphingCircleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BC81FA2BB139B200C18908 /* MorphingCircleShape.swift */; };
@@ -65,12 +65,12 @@
 		C1597E4B2BB1153700416992 /* HottSpottUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HottSpottUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C1597E5C2BB1160400416992 /* LocationsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsDataService.swift; sourceTree = "<group>"; };
 		C1597E5E2BB1161A00416992 /* LocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewModel.swift; sourceTree = "<group>"; };
-		C1597E602BB1162D00416992 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
 		C1597E622BB1164900416992 /* LocationMapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapAnnotationView.swift; sourceTree = "<group>"; };
 		C1597E642BB1165A00416992 /* LocationPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPreviewView.swift; sourceTree = "<group>"; };
 		C1597E662BB1166D00416992 /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
 		C1597E682BB1167B00416992 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		C1597E6A2BB1169400416992 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		C1A5ACB12BB6140A003062EB /* MorphingCircleGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorphingCircleGroup.swift; sourceTree = "<group>"; };
 		C1BC81F62BB1352900C18908 /* AnimatableVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableVector.swift; sourceTree = "<group>"; };
 		C1BC81F82BB1398C00C18908 /* CG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CG.swift; sourceTree = "<group>"; };
 		C1BC81FA2BB139B200C18908 /* MorphingCircleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorphingCircleShape.swift; sourceTree = "<group>"; };
@@ -187,13 +187,13 @@
 		C1597E5A2BB115C900416992 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C1597E602BB1162D00416992 /* LocationDetailView.swift */,
 				C1597E622BB1164900416992 /* LocationMapAnnotationView.swift */,
 				C1597E642BB1165A00416992 /* LocationPreviewView.swift */,
 				C1597E662BB1166D00416992 /* LocationsView.swift */,
 				C1597E682BB1167B00416992 /* RatingView.swift */,
 				C13C01212BB3B97A00F0C4C8 /* SwipeView.swift */,
 				C13C01242BB3D30B00F0C4C8 /* MorphingCircleTexture.swift */,
+				C1A5ACB12BB6140A003062EB /* MorphingCircleGroup.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -345,13 +345,13 @@
 				C1BC81FD2BB13A1200C18908 /* MorphingCircle.swift in Sources */,
 				C1BC81FB2BB139B200C18908 /* MorphingCircleShape.swift in Sources */,
 				C1BC81F92BB1398C00C18908 /* CG.swift in Sources */,
+				C1A5ACB22BB6140A003062EB /* MorphingCircleGroup.swift in Sources */,
 				C1597E692BB1167B00416992 /* RatingView.swift in Sources */,
 				C1597E5D2BB1160400416992 /* LocationsDataService.swift in Sources */,
 				C1597E652BB1165A00416992 /* LocationPreviewView.swift in Sources */,
 				7DD580C92BB3CA5C00466773 /* Rating.swift in Sources */,
 				C1597E672BB1166D00416992 /* LocationsView.swift in Sources */,
 				C13C01252BB3D30B00F0C4C8 /* MorphingCircleTexture.swift in Sources */,
-				C1597E612BB1162D00416992 /* LocationDetailView.swift in Sources */,
 				C1597E5F2BB1161A00416992 /* LocationsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
