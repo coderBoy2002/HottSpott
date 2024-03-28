@@ -23,10 +23,10 @@ struct LocationsView: View {
                     .environmentObject(vm)
             }
             
-            /*if !vm.confirmedRating {
+            if !vm.confirmedRating {
                 RatingView()
                     .environmentObject(vm)
-            }*/
+            }
         }
     }
 }

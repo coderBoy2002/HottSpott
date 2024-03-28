@@ -42,7 +42,7 @@ extension RatingView {
                     .fill(.blue)
                     .ignoresSafeArea()
                     .frame(height: ratingLineHeight)*/
-                MorphingCircleTexture(color: .blue)
+                MorphingCircleTexture(size:100, numCircles: 10, color: .blue)
                     .offset(y: -UIScreen.main.bounds.height+ratingLineHeight)
                     .opacity(0.1)
             }
@@ -51,7 +51,7 @@ extension RatingView {
                     .fill(.red)
                     .ignoresSafeArea()
                     .frame(height: UIScreen.main.bounds.height - ratingLineHeight)*/
-                MorphingCircleTexture(color: .red)
+                MorphingCircleTexture(size:100, numCircles: 10, color: .red)
                     .opacity(0.1)
             }
         }

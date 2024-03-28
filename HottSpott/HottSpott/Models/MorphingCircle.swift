@@ -56,7 +56,8 @@ struct MorphingCircle: View & Identifiable & Hashable {
                 timer = Timer.scheduledTimer(withTimeInterval: duration / secting, repeats: true) { timer in
                     update()
                 }
-            }.onDisappear {
+            }
+            .onDisappear {
                 timer?.invalidate()
             }
             .frame(width: outerSize, height: outerSize, alignment: .center)
