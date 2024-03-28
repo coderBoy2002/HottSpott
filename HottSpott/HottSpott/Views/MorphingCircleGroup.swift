@@ -17,7 +17,14 @@ struct MorphingCircleGroup: View {
     @State var color: Color
     @State var imageOffsets: [CGPoint]
     
-    init(size: CGFloat, numCircles: Int, morphingRange: CGFloat, points: Int, duration: Double, secting: Double, color: Color, imageOffsets: [CGPoint]) {
+    init(size: CGFloat, 
+         numCircles: Int,
+         morphingRange: CGFloat,
+         points: Int,
+         duration: Double,
+         secting: Double,
+         color: Color,
+         imageOffsets: [CGPoint]) {
         self.size = size
         self.numCircles = numCircles
         self.morphingRange = morphingRange
