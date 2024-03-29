@@ -12,22 +12,24 @@ struct MorphingCircleTexture: View {
     let screenHeight = UIScreen.main.bounds.height
     
     @State var color: Color
+    @State var speed: Double
     
-    init (color: Color) {
+    init (color: Color, speed: Double) {
         self.color = color
+        self.speed = speed
     }
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 10)
+            /*RoundedRectangle(cornerRadius: 10)
                 .fill(color)
                 .ignoresSafeArea()
-                .opacity(0.4)
+                .opacity(0.4)*/
             bottomLayer
-                .opacity(0.3)
+                .opacity(0.4)
                 .blur(radius: 6, opaque: false)
             middleLayer
-                .opacity(0.3)
+                .opacity(0.4)
                 .blur(radius: 6, opaque: false)
             topLayer
                 .opacity(0.3)
@@ -39,7 +41,7 @@ struct MorphingCircleTexture: View {
 
 
 #Preview {
-    MorphingCircleTexture(color: Color.red)
+    MorphingCircleTexture(color: Color.red, speed: 0.5)
 }
  
 
@@ -84,7 +86,7 @@ extension MorphingCircleTexture {
         8
     }
     private var durationBottom: Double {
-        4.0
+        4.0 * speed
     }
     private var sectingBottom: Double {
         10
@@ -119,7 +121,7 @@ extension MorphingCircleTexture {
         6
     }
     private var durationMiddle: Double {
-        4.0
+        4.0 * speed
     }
     private var sectingMiddle: Double {
         6
@@ -154,7 +156,7 @@ extension MorphingCircleTexture {
         4
     }
     private var durationTop: Double {
-        2.0
+        2.0 * speed
     }
     private var sectingTop: Double {
         5

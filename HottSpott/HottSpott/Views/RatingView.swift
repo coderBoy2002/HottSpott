@@ -37,26 +37,14 @@ struct RatingView: View {
 extension RatingView {
     private var temperatureSlider: some View {
         VStack {
-            ZStack {
-                /*RoundedRectangle(cornerRadius: stretchOfTemperature)
-                    .fill(.blue)
-                    .ignoresSafeArea()
-                    .frame(height: ratingLineHeight)*/
-                /*MorphingCircleTexture(size:200, numCircles: 10, morphingRange: 50, color: .blue)
-                    .offset(y: -UIScreen.main.bounds.height+ratingLineHeight)
-                    .opacity(0.1)*/
-            }
-            ZStack {
-                /*RoundedRectangle(cornerRadius: stretchOfTemperature)
-                    .fill(.red)
-                    .ignoresSafeArea()
-                    .frame(height: UIScreen.main.bounds.height - ratingLineHeight)*/
-                /*MorphingCircleTexture(size:200, numCircles: 10, morphingRange: 50, color: .red)
-                    .opacity(0.1)*/
-            }
+            MorphingCircleTexture(color: Color.red, speed: 0.5)
+                .ignoresSafeArea()
+                .offset(y: -UIScreen.main.bounds.height+ratingLineHeight)
+            MorphingCircleTexture(color: Color.blue, speed: 1.0)
+                .ignoresSafeArea()
+                .offset(y: -UIScreen.main.bounds.height/2 +ratingLineHeight)
+
         }
-        .background(.thinMaterial)
-        .opacity(0.6)
         .gesture(
             DragGesture()
                 .onChanged { gesture in
