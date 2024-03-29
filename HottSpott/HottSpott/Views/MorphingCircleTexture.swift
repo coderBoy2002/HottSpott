@@ -25,11 +25,13 @@ struct MorphingCircleTexture: View {
                 .opacity(0.4)
             bottomLayer
                 .opacity(0.3)
+                .blur(radius: 6, opaque: false)
             middleLayer
                 .opacity(0.3)
+                .blur(radius: 6, opaque: false)
             topLayer
                 .opacity(0.3)
-            
+                .blur(radius: 6, opaque: false)
         }
     }
     
@@ -37,7 +39,7 @@ struct MorphingCircleTexture: View {
 
 
 #Preview {
-    MorphingCircleTexture(color: Color.blue)
+    MorphingCircleTexture(color: Color.red)
 }
  
 
@@ -73,19 +75,19 @@ extension MorphingCircleTexture {
         700
     }
     private var numCirclesBottom: Int {
-        4
+        5
     }
     private var morphingRangeBottom: CGFloat {
-        100
+        150
     }
     private var pointsBottom: Int {
         8
     }
     private var durationBottom: Double {
-        20.0
+        4.0
     }
     private var sectingBottom: Double {
-        100
+        10
     }
     private var imageOffsetsBottom: [CGPoint] {
         return getPartitions(numCircles: numCirclesBottom, percentOffset: 0.05)
@@ -105,22 +107,22 @@ extension MorphingCircleTexture {
     }
     
     private var sizeMiddle: CGFloat {
-        200
+        300
     }
     private var numCirclesMiddle: Int {
-        10
+        20
     }
     private var morphingRangeMiddle: CGFloat {
-        30
+        80
     }
     private var pointsMiddle: Int {
-        7
+        6
     }
     private var durationMiddle: Double {
-        7.0
+        4.0
     }
     private var sectingMiddle: Double {
-        7
+        6
     }
     private var imageOffsetsMiddle: [CGPoint] {
         return getPartitions(numCircles: numCirclesMiddle, percentOffset: 0.05)
@@ -143,16 +145,16 @@ extension MorphingCircleTexture {
         150
     }
     private var numCirclesTop: Int {
-        20
+        80
     }
     private var morphingRangeTop: CGFloat {
-        20
+        50
     }
     private var pointsTop: Int {
-        5
+        4
     }
     private var durationTop: Double {
-        7.0
+        2.0
     }
     private var sectingTop: Double {
         5
