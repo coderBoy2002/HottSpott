@@ -10,6 +10,6 @@ import MapKit
 
 struct Rating {
     let coordinate: CLLocationCoordinate2D
-    let rating: Int
-    
+    let ratings: Int
+    // test commit
 }

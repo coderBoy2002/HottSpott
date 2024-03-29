@@ -25,12 +25,10 @@ struct MorphingCircleTexture: View {
         ZStack {
             bottomLayer
                 .opacity(0.1)
-                .blur(radius: 6, opaque: false)
             
             if !onlyBottom {
                 middleLayer
                     .opacity(0.2)
-                    .blur(radius: 6, opaque: false)
             }
         }
     }
