@@ -24,6 +24,7 @@ struct LocationPreviewView: View {
         .background(
             RoundedRectangle(cornerRadius: 20)
             .fill(.ultraThinMaterial)
+            .opacity(0.5)
             .background(Color("AccentColor"))
             .cornerRadius(20)
             .offset(y: 65)

@@ -20,7 +20,7 @@ struct LocationsView: View {
     
                 RatingView()
                     .environmentObject(vm)
-                    .blur(radius: 2, opaque: false)
+                    //.blur(radius: 2, opaque: false)
             }
             else {
                 mainArea
