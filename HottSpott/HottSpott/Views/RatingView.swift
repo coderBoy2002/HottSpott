@@ -39,10 +39,10 @@ extension RatingView {
         VStack {
             MorphingCircleTexture(color: Color.red, speed: 0.5)
                 .ignoresSafeArea()
-                .offset(y: -UIScreen.main.bounds.height+ratingLineHeight)
-            MorphingCircleTexture(color: Color.blue, speed: 1.0)
+                .offset(y: -UIScreen.main.bounds.height + ratingLineHeight)
+            MorphingCircleTexture(color: Color.blue, speed: 2.0)
                 .ignoresSafeArea()
-                .offset(y: -UIScreen.main.bounds.height/2 +ratingLineHeight)
+                .offset(y: -UIScreen.main.bounds.height/2 + ratingLineHeight)
 
         }
         .gesture(
