@@ -26,7 +26,7 @@ struct MorphingCircleTexture: View {
                 .ignoresSafeArea()
                 .opacity(0.4)*/
             bottomLayer
-                .opacity(0.4)
+                .opacity(0.3)
                 .blur(radius: 6, opaque: false)
             middleLayer
                 .opacity(0.4)
@@ -82,7 +82,7 @@ extension MorphingCircleTexture {
         700
     }
     private var numCirclesBottom: Int {
-        6
+        7
     }
     private var morphingRangeBottom: CGFloat {
         150
