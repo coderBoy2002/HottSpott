@@ -28,12 +28,12 @@ struct MorphingCircleTexture: View {
                 .ignoresSafeArea()
                 .opacity(0.4)*/
             bottomLayer
-                .opacity(0.4)
+                .opacity(0.2)
                 .blur(radius: 6, opaque: false)
             
             if !onlyBottom {
                 middleLayer
-                    .opacity(0.6)
+                    .opacity(0.3)
                     .blur(radius: 6, opaque: false)
             }
         }
@@ -43,7 +43,7 @@ struct MorphingCircleTexture: View {
 
 
 #Preview {
-    MorphingCircleTexture(color: Color.red, speed: 0.5, onlyBottom: true)
+    MorphingCircleTexture(color: Color.red, speed: 0.5, onlyBottom: false)
 }
  
 
@@ -81,22 +81,22 @@ extension MorphingCircleTexture {
     
     
     private var sizeBottom: CGFloat {
-        700
+        1500
     }
     private var numCirclesBottom: Int {
-        8
+        2
     }
     private var morphingRangeBottom: CGFloat {
-        150
+        400
     }
     private var pointsBottom: Int {
-        8
+        4
     }
     private var durationBottom: Double {
-        4.0 * speed
+        10.0 * speed
     }
     private var sectingBottom: Double {
-        10
+        8
     }
     private var imageOffsetsBottom: [CGPoint] {
         return getPartitions(numCircles: numCirclesBottom, percentOffset: 0.05, size: sizeBottom)
@@ -116,19 +116,19 @@ extension MorphingCircleTexture {
     }
     
     private var sizeMiddle: CGFloat {
-        300
+        800
     }
     private var numCirclesMiddle: Int {
-        20
+        10
     }
     private var morphingRangeMiddle: CGFloat {
-        80
+        200
     }
     private var pointsMiddle: Int {
-        6
+        4
     }
     private var durationMiddle: Double {
-        4.0 * speed
+        10.0 * speed
     }
     private var sectingMiddle: Double {
         6
@@ -147,41 +147,6 @@ extension MorphingCircleTexture {
                     secting: sectingMiddle,
                     color: color,
                     imageOffsets: imageOffsetsMiddle
-                )
-    }
-    
-    private var sizeTop: CGFloat {
-        150
-    }
-    private var numCirclesTop: Int {
-        80
-    }
-    private var morphingRangeTop: CGFloat {
-        50
-    }
-    private var pointsTop: Int {
-        4
-    }
-    private var durationTop: Double {
-        2.0 * speed
-    }
-    private var sectingTop: Double {
-        5
-    }
-    private var imageOffsetsTop: [CGPoint] {
-        return getPartitions(numCircles: numCirclesTop, percentOffset: 0.1, size: sizeTop)
-    }
-    
-    private var topLayer: some View {
-        return MorphingCircleGroup(
-                    size: sizeTop,
-                    numCircles: numCirclesTop,
-                    morphingRange: morphingRangeTop,
-                    points: pointsTop,
-                    duration: durationTop,
-                    secting: sectingTop,
-                    color: color,
-                    imageOffsets: imageOffsetsTop
                 )
     }
 }
