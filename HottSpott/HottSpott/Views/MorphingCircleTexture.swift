@@ -23,17 +23,13 @@ struct MorphingCircleTexture: View {
     
     var body: some View {
         ZStack {
-            /*RoundedRectangle(cornerRadius: 10)
-                .fill(color)
-                .ignoresSafeArea()
-                .opacity(0.4)*/
             bottomLayer
-                .opacity(0.2)
+                .opacity(0.1)
                 .blur(radius: 6, opaque: false)
             
             if !onlyBottom {
                 middleLayer
-                    .opacity(0.3)
+                    .opacity(0.2)
                     .blur(radius: 6, opaque: false)
             }
         }

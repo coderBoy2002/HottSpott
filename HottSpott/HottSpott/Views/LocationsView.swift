@@ -15,15 +15,7 @@ struct LocationsView: View {
     var body: some View {
         ZStack {
             if !vm.confirmedRating {
-                mapLayer
-                    .ignoresSafeArea()
-                    .opacity(0.1)
-                
-                VStack(spacing:0) {
-                    Spacer()
-                    SwipeView()
-                        .environmentObject(vm)
-                }
+                mainArea
                 .opacity(0.2)
     
                 RatingView()
@@ -31,14 +23,7 @@ struct LocationsView: View {
                     .blur(radius: 2, opaque: false)
             }
             else {
-                mapLayer
-                    .ignoresSafeArea()
-                
-                VStack(spacing:0) {
-                    Spacer()
-                    SwipeView()
-                        .environmentObject(vm)
-                }
+                mainArea
             }
         }
     }
@@ -67,6 +52,19 @@ extension LocationsView {
                             vm.changeLocation(location: location)
                         }
                 }
+            }
+        }
+    }
+    
+    private var mainArea: some View {
+        ZStack {
+            mapLayer
+                .ignoresSafeArea()
+            
+            VStack(spacing:0) {
+                Spacer()
+                SwipeView()
+                    .environmentObject(vm)
             }
         }
     }

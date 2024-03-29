@@ -31,22 +31,9 @@ struct SwipeView: View {
                         .onChanged { gesture in
                             if vm.startX != -100 {
                                 let curX: CGFloat = gesture.location.x
-                                if  curX >  vm.startX {
-                                    if curX > screenWidth / 2 {
-                                        if vm.startX > screenWidth / 2 + swipeFactorAdjustment {
-                                            vm.swipeFactor = 2.2 + 0.025*(abs(vm.startX - screenWidth/2 + swipeFactorAdjustment))
-                                        }
-                                        vm.swipeAmount = vm.swipeFactor * ( curX - max(screenWidth / 2,vm.startX))
-                                    }
-                                }
-                                else if curX < screenWidth / 2 {
-                                    if vm.startX < screenWidth / 2 - swipeFactorAdjustment {
-                                        vm.swipeFactor = 2.2 + 0.025*(abs(screenWidth/2 - vm.startX - swipeFactorAdjustment))
-                                    }
-                                    
-                                    vm.swipeAmount = vm.swipeFactor * (curX - min(screenWidth / 2,vm.startX))
-                                }
-                                
+                                vm.updateSwipe(curX: curX, 
+                                               screenWidth: screenWidth,
+                                               swipeFactorAdjustment: swipeFactorAdjustment)
                             }
                             else {
                                 vm.startX = gesture.location.x
