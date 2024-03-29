@@ -95,20 +95,20 @@ class LocationsViewModel: ObservableObject {
     }
     
     func updateSwipe(curX: CGFloat, screenWidth: CGFloat, swipeFactorAdjustment: CGFloat) {
-        if  curX >  vm.startX {
+        if  curX >  startX {
             if curX > screenWidth / 2 {
-                if vm.startX > screenWidth / 2 + swipeFactorAdjustment {
-                    vm.swipeFactor = 2.2 + 0.025*(abs(vm.startX - screenWidth/2 + swipeFactorAdjustment))
+                if startX > screenWidth / 2 + swipeFactorAdjustment {
+                    swipeFactor = 2.2 + 0.025*(abs(startX - screenWidth/2 + swipeFactorAdjustment))
                 }
-                vm.swipeAmount = vm.swipeFactor * ( curX - max(screenWidth / 2,vm.startX))
+                swipeAmount = swipeFactor * ( curX - max(screenWidth / 2, startX))
             }
         }
         else if curX < screenWidth / 2 {
-            if vm.startX < screenWidth / 2 - swipeFactorAdjustment {
-                vm.swipeFactor = 2.2 + 0.025*(abs(screenWidth/2 - vm.startX - swipeFactorAdjustment))
+            if startX < screenWidth / 2 - swipeFactorAdjustment {
+                swipeFactor = 2.2 + 0.025*(abs(screenWidth/2 - startX - swipeFactorAdjustment))
             }
             
-            vm.swipeAmount = vm.swipeFactor * (curX - min(screenWidth / 2,vm.startX))
+            swipeAmount = swipeFactor * (curX - min(screenWidth / 2, startX))
         }
     }
 
