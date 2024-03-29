@@ -14,17 +14,17 @@ struct LocationsView: View {
     
     var body: some View {
         ZStack {
-            if !vm.confirmedRating {
+            /*if !vm.confirmedRating {
                 mainArea
                 .opacity(0.2)
     
-                RatingView()
+                /*RatingView()
                     .environmentObject(vm)
-                    //.blur(radius: 2, opaque: false)
+                    //.blur(radius: 2, opaque: false)*/
             }
-            else {
-                mainArea
-            }
+            else {*/
+            mainArea
+            //}
         }
     }
 }
@@ -56,9 +56,28 @@ extension LocationsView {
         }
     }
     
+    private var header: some View {
+        return ZStack {
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color.white)
+                .frame(height: 200)
+                .cornerRadius(70)
+                .opacity(0.6)
+            Text("HottSpott")
+                .offset(y: 70)
+                .padding()
+                .foregroundStyle(.black)
+                .font(.title2)
+                .fontWeight(.bold)
+        }
+        .offset(y: -UIScreen.main.bounds.height / 2)
+    }
+    
     private var mainArea: some View {
         ZStack {
             mapLayer
+                .ignoresSafeArea()
+            header
                 .ignoresSafeArea()
             
             VStack(spacing:0) {
