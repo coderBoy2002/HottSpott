@@ -14,18 +14,30 @@ struct LocationsView: View {
     
     var body: some View {
         ZStack {
-            mapLayer
-                .ignoresSafeArea()
-            
-            VStack(spacing:0) {
-                Spacer()
-                SwipeView()
-                    .environmentObject(vm)
-            }
-            
             if !vm.confirmedRating {
+                mapLayer
+                    .ignoresSafeArea()
+                    .opacity(0.1)
+                
+                VStack(spacing:0) {
+                    Spacer()
+                    SwipeView()
+                        .environmentObject(vm)
+                }
+                .opacity(0.2)
+    
                 RatingView()
                     .environmentObject(vm)
+            }
+            else {
+                mapLayer
+                    .ignoresSafeArea()
+                
+                VStack(spacing:0) {
+                    Spacer()
+                    SwipeView()
+                        .environmentObject(vm)
+                }
             }
         }
     }

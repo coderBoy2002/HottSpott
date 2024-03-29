@@ -13,10 +13,12 @@ struct MorphingCircleTexture: View {
     
     @State var color: Color
     @State var speed: Double
+    @State var onlyBottom: Bool
     
-    init (color: Color, speed: Double) {
+    init (color: Color, speed: Double, onlyBottom: Bool) {
         self.color = color
         self.speed = speed
+        self.onlyBottom = onlyBottom
     }
     
     var body: some View {
@@ -26,14 +28,14 @@ struct MorphingCircleTexture: View {
                 .ignoresSafeArea()
                 .opacity(0.4)*/
             bottomLayer
-                .opacity(0.3)
-                .blur(radius: 6, opaque: false)
-            middleLayer
                 .opacity(0.4)
                 .blur(radius: 6, opaque: false)
-            topLayer
-                .opacity(0.3)
-                .blur(radius: 6, opaque: false)
+            
+            if !onlyBottom {
+                middleLayer
+                    .opacity(0.6)
+                    .blur(radius: 6, opaque: false)
+            }
         }
     }
     
@@ -41,7 +43,7 @@ struct MorphingCircleTexture: View {
 
 
 #Preview {
-    MorphingCircleTexture(color: Color.red, speed: 0.5)
+    MorphingCircleTexture(color: Color.red, speed: 0.5, onlyBottom: true)
 }
  
 
@@ -55,7 +57,7 @@ extension MorphingCircleTexture {
         var lastXSecond: CGFloat = 0.0
         for index in 0..<numCircles {
             var xRandom: CGFloat = .random(in: 0..<screenWidth)
-            while abs(lastX - xRandom) < 140  && abs(lastXSecond - xRandom) < 140 {
+            while abs(lastX - xRandom) < 50  && abs(lastXSecond - xRandom) < 50 {
                 xRandom = .random(in: 0..<screenWidth)
             }
             lastXSecond = lastX
@@ -82,7 +84,7 @@ extension MorphingCircleTexture {
         700
     }
     private var numCirclesBottom: Int {
-        7
+        8
     }
     private var morphingRangeBottom: CGFloat {
         150
