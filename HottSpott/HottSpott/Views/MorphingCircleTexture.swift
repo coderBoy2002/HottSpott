@@ -66,7 +66,10 @@ extension MorphingCircleTexture {
             
             let yRandomOffset = CGFloat(index) * stepSize * (1.0 - percentOffset + Double.random(in: 0.0...(2.0 * percentOffset)))
             var yRandom = (stepSize / 2) + yRandomOffset
-            if yRandom < 150 && size == 700 {
+            if yRandom < 300 && size == 1500 {
+                yRandom = 300
+            }
+            if yRandom < 150 && size == 800 {
                 yRandom = 150
             }
             
@@ -84,7 +87,7 @@ extension MorphingCircleTexture {
         1500
     }
     private var numCirclesBottom: Int {
-        2
+        3
     }
     private var morphingRangeBottom: CGFloat {
         400
@@ -119,7 +122,7 @@ extension MorphingCircleTexture {
         800
     }
     private var numCirclesMiddle: Int {
-        10
+        12
     }
     private var morphingRangeMiddle: CGFloat {
         200
