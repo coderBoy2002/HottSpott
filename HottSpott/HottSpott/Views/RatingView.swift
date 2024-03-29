@@ -18,7 +18,8 @@ struct RatingView: View {
     let baseSizeTemperature: CGFloat = 250
     @State var stretchOfConfirm: CGFloat = 40
     @State var stretchOfTemperature: CGFloat = 250
-    @State var isMovingScale: Bool = false
+    @State private var startY: CGFloat = -100
+    @State private var startHeight: CGFloat = -100
     
     let spacingFactor : CGFloat = 75
     
@@ -48,8 +49,9 @@ extension RatingView {
         .gesture(
             DragGesture()
                 .onChanged { gesture in
-                    if isMovingScale {
-                        ratingLineHeight = gesture.location.y
+                    if startY != -100 {
+                        let curHeight: CGFloat = gesture.location.y
+                        ratingLineHeight = startHeight - 1.8 * (startY - curHeight)
                         if ratingLineHeight < spacingFactor {
                             ratingLineHeight = spacingFactor
                         }
@@ -58,14 +60,13 @@ extension RatingView {
                         }
                     }
                     else {
-                        if abs(gesture.location.y - ratingLineHeight) < 60 {
-                            isMovingScale = true
-                        }
-                    }
+                        startY = gesture.location.y
+                        startHeight = ratingLineHeight
                         
+                    }
                 }
                 .onEnded { gesture in
-                    isMovingScale = false
+                    startY = -100
                 }
         )
     }
