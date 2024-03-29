@@ -11,6 +11,7 @@ struct RatingView: View {
     
     @EnvironmentObject private var vm: LocationsViewModel
     
+    let screenHeight: CGFloat = UIScreen.main.bounds.height
     @State var ratingLineHeight: CGFloat = UIScreen.main.bounds.height / 2
     
     let baseSizeConfirm: CGFloat = 40
@@ -39,10 +40,10 @@ extension RatingView {
         VStack {
             MorphingCircleTexture(color: Color.red, speed: 0.5)
                 .ignoresSafeArea()
-                .offset(y: -UIScreen.main.bounds.height + ratingLineHeight)
+                .offset(y: -screenHeight + ratingLineHeight)
             MorphingCircleTexture(color: Color.blue, speed: 2.0)
                 .ignoresSafeArea()
-                .offset(y: -UIScreen.main.bounds.height/2 + ratingLineHeight)
+                .offset(y: -screenHeight/2 + ratingLineHeight)
 
         }
         .gesture(
@@ -53,8 +54,8 @@ extension RatingView {
                         if ratingLineHeight < spacingFactor {
                             ratingLineHeight = spacingFactor
                         }
-                        else if ratingLineHeight > UIScreen.main.bounds.height - spacingFactor {
-                            ratingLineHeight = UIScreen.main.bounds.height - spacingFactor
+                        else if ratingLineHeight > screenHeight - spacingFactor {
+                            ratingLineHeight = screenHeight - spacingFactor
                         }
                     }
                     else {

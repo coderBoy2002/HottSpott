@@ -47,7 +47,7 @@ struct MorphingCircleTexture: View {
 
 extension MorphingCircleTexture {
     
-    private func getPartitions(numCircles: Int, percentOffset: Double) -> [CGPoint] {
+    private func getPartitions(numCircles: Int, percentOffset: Double, size: CGFloat) -> [CGPoint] {
         var imageOffsets: [CGPoint] = Array(repeating: CGPoint.zero, count: numCircles)
         
         let stepSize: CGFloat = screenHeight / CGFloat(numCircles)
@@ -55,7 +55,7 @@ extension MorphingCircleTexture {
         var lastXSecond: CGFloat = 0.0
         for index in 0..<numCircles {
             var xRandom: CGFloat = .random(in: 0..<screenWidth)
-            while abs(lastX - xRandom) < 100  && abs(lastXSecond - xRandom) < 100 {
+            while abs(lastX - xRandom) < 140  && abs(lastXSecond - xRandom) < 140 {
                 xRandom = .random(in: 0..<screenWidth)
             }
             lastXSecond = lastX
@@ -63,7 +63,12 @@ extension MorphingCircleTexture {
             
             
             let yRandomOffset = CGFloat(index) * stepSize * (1.0 - percentOffset + Double.random(in: 0.0...(2.0 * percentOffset)))
-            let yRandom = (stepSize / 2) + yRandomOffset
+            var yRandom = (stepSize / 2) + yRandomOffset
+            if yRandom < 150 && size == 700 {
+                yRandom = 150
+            }
+            
+            
             imageOffsets[index] = CGPoint(
                 x: xRandom,
                 y: yRandom
@@ -77,7 +82,7 @@ extension MorphingCircleTexture {
         700
     }
     private var numCirclesBottom: Int {
-        5
+        6
     }
     private var morphingRangeBottom: CGFloat {
         150
@@ -92,7 +97,7 @@ extension MorphingCircleTexture {
         10
     }
     private var imageOffsetsBottom: [CGPoint] {
-        return getPartitions(numCircles: numCirclesBottom, percentOffset: 0.05)
+        return getPartitions(numCircles: numCirclesBottom, percentOffset: 0.05, size: sizeBottom)
     }
     
     private var bottomLayer: some View {
@@ -127,7 +132,7 @@ extension MorphingCircleTexture {
         6
     }
     private var imageOffsetsMiddle: [CGPoint] {
-        return getPartitions(numCircles: numCirclesMiddle, percentOffset: 0.05)
+        return getPartitions(numCircles: numCirclesMiddle, percentOffset: 0.05, size: sizeMiddle)
     }
     
     private var middleLayer: some View {
@@ -162,7 +167,7 @@ extension MorphingCircleTexture {
         5
     }
     private var imageOffsetsTop: [CGPoint] {
-        return getPartitions(numCircles: numCirclesTop, percentOffset: 0.1)
+        return getPartitions(numCircles: numCirclesTop, percentOffset: 0.1, size: sizeTop)
     }
     
     private var topLayer: some View {
