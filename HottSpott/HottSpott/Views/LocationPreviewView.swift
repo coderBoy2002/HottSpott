@@ -53,7 +53,8 @@ extension LocationPreviewView {
                 .cornerRadius(10)
         }
         .padding(7)
-        .background(Color.secondary)
+        .background(.ultraThinMaterial)
+        .opacity(0.8)
         .cornerRadius(60)
         
     }

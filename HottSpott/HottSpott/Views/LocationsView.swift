@@ -58,15 +58,14 @@ extension LocationsView {
     
     private var header: some View {
         return ZStack {
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.white)
-                .frame(height: 200)
-                .cornerRadius(70)
-                .opacity(0.6)
+            RoundedRectangle(cornerRadius: 130)
+                .fill(.ultraThinMaterial)
+                .offset(y: 70)
+                .frame(width: 300, height: 50)
             Text("HottSpott")
                 .offset(y: 70)
                 .padding()
-                .foregroundStyle(.black)
+                .foregroundStyle(.primary)
                 .font(.title2)
                 .fontWeight(.bold)
         }
