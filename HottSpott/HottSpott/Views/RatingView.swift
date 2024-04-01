@@ -33,10 +33,11 @@ extension RatingView {
         VStack {
             MorphingCircleTexture(color: Color.blue, speed: 0.5, onlyBottom: false)
                     .ignoresSafeArea()
-                    .offset(y: -screenHeight + ratingLineHeight)
+                    .offset(y: screenHeight/2 * 0.4 - ratingLineHeight)
+                    .rotationEffect(.degrees(-180))
             MorphingCircleTexture(color: Color.red, speed: 0.5, onlyBottom: false)
                     .ignoresSafeArea()
-                    .offset(y: -screenHeight/2 + ratingLineHeight)
+                    .offset(y: -screenHeight/2 * 1.6 + ratingLineHeight)
         }
         .gesture(
             DragGesture()

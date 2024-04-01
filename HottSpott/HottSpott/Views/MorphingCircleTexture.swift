@@ -43,41 +43,18 @@ struct MorphingCircleTexture: View {
 
 extension MorphingCircleTexture {
     
-    private func getPartitions(numCircles: Int, percentOffset: Double, size: CGFloat) -> [CGPoint] {
+    private func getPartitions(numCircles: Int, size: CGFloat) -> [CGPoint] {
         var imageOffsets: [CGPoint] = Array(repeating: CGPoint.zero, count: numCircles)
         
-        let stepSize: CGFloat = screenHeight / CGFloat(numCircles)
-        var lastX: CGFloat = 0.0
-        var lastXSecond: CGFloat = 0.0
         for index in 0..<numCircles {
-            var xRandom: CGFloat = .random(in: 0..<screenWidth)
-            while abs(lastX - xRandom) < 50  && abs(lastXSecond - xRandom) < 50 {
-                xRandom = .random(in: 0..<screenWidth)
-            }
-            lastXSecond = lastX
-            lastX = xRandom
+            let sudoRadius = min(screenWidth / 2, screenHeight / 2) * 1.5
+            var ranR: CGFloat = CGFloat(Double.random(in: 0..<sudoRadius))
             
-            /* INMPLEMENT RANDOM RADIUS CHECK THIS OVER
-             let radius = min(screenWidth / 2, screenHeight / 2)
-             
-             ranCos = Double.random(in: -1.0..<1.0)
-             ranSin = 1 - (ranCos * ranCos)
-             ranR = Double.random(in: 0..<radius)
-             xRandom = ranR * ranCos + screenWidth
-             yRandom = ranR * ranSin + screenHeight
-             
-             */
+            var ranCos: CGFloat = CGFloat(Double.random(in: -1.0..<1.0))
+            var ranSin: CGFloat = sqrt(1 - (ranCos * ranCos))
             
-            
-            let yRandomOffset = CGFloat(index) * stepSize * (1.0 - percentOffset + Double.random(in: 0.0...(2.0 * percentOffset)))
-            var yRandom = (stepSize / 2) + yRandomOffset
-            if yRandom < 300 && size == 1500 {
-                yRandom = 300
-            }
-            if yRandom < 150 && size == 800 {
-                yRandom = 150
-            }
-            
+            let xRandom = ranR * ranCos + screenWidth / 2
+            let yRandom = ranR * ranSin + screenHeight / 2
             
             imageOffsets[index] = CGPoint(
                 x: xRandom,
@@ -87,75 +64,48 @@ extension MorphingCircleTexture {
         return imageOffsets
     }
     
-    
-    private var sizeBottom: CGFloat {
-        1500
-    }
-    private var numCirclesBottom: Int {
-        3
-    }
-    private var morphingRangeBottom: CGFloat {
-        400
-    }
-    private var pointsBottom: Int {
-        3
-    }
-    private var durationBottom: Double {
-        10.0 * speed
-    }
-    private var sectingBottom: Double {
-        8
-    }
-    private var imageOffsetsBottom: [CGPoint] {
-        return getPartitions(numCircles: numCirclesBottom, percentOffset: 0.05, size: sizeBottom)
+    private func getLayerOfTexture(size: CGFloat,
+                                   numCircles: Int,
+                                   morphingRange: CGFloat,
+                                   points: Int,
+                                   duration: Double,
+                                   secting: Double) -> some View {
+        
+        
+        // CREATES OFFSETS FOR EACH MORPHING CIRCLE
+        let imageOffsets = getPartitions(numCircles: numCircles,
+                                               size: size)
+        
+        
+        
+        return MorphingCircleGroup(
+                    size: size,
+                    numCircles: numCircles,
+                    morphingRange: morphingRange,
+                    points: points,
+                    duration: duration,
+                    secting: secting,
+                    color: color,
+                    imageOffsets: imageOffsets
+                )
     }
     
     private var bottomLayer: some View {
-        return MorphingCircleGroup(
-                    size: sizeBottom,
-                    numCircles: numCirclesBottom,
-                    morphingRange: morphingRangeBottom,
-                    points: pointsBottom,
-                    duration: durationBottom,
-                    secting: sectingBottom,
-                    color: color,
-                    imageOffsets: imageOffsetsBottom
-                )
-    }
-    
-    private var sizeMiddle: CGFloat {
-        800
-    }
-    private var numCirclesMiddle: Int {
-        12
-    }
-    private var morphingRangeMiddle: CGFloat {
-        200
-    }
-    private var pointsMiddle: Int {
-        3
-    }
-    private var durationMiddle: Double {
-        10.0 * speed
-    }
-    private var sectingMiddle: Double {
-        6
-    }
-    private var imageOffsetsMiddle: [CGPoint] {
-        return getPartitions(numCircles: numCirclesMiddle, percentOffset: 0.05, size: sizeMiddle)
+        return getLayerOfTexture(size: 1500,
+                                 numCircles: 3,
+                                 morphingRange: 400,
+                                 points: 3,
+                                 duration: 10.0 * speed,
+                                 secting: 8)
     }
     
     private var middleLayer: some View {
-        return MorphingCircleGroup(
-                    size: sizeMiddle,
-                    numCircles: numCirclesMiddle,
-                    morphingRange: morphingRangeMiddle,
-                    points: pointsMiddle,
-                    duration: durationMiddle,
-                    secting: sectingMiddle,
-                    color: color,
-                    imageOffsets: imageOffsetsMiddle
-                )
+        return getLayerOfTexture(size: 800,
+                                 numCircles: 12,
+                                 morphingRange: 200,
+                                 points: 3,
+                                 duration: 10.0 * speed,
+                                 secting: 6)
     }
 }
 
