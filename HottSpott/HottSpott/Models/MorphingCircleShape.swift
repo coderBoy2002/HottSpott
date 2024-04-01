@@ -21,7 +21,7 @@ struct MorphingCircleShape: Shape {
     // Calculates control points
     func getTwoTangent(center: CGPoint, point: CGPoint) -> (first: CGPoint, second: CGPoint) {
         let a = CGVector(center - point)
-        let dir = a.perpendicular() * a.len() * tangentCoeficient
+        let dir = a.perpendicular() * tangentCoeficient
         return (point - dir, point + dir)
     }
     
@@ -45,7 +45,9 @@ struct MorphingCircleShape: Shape {
             nextPoint = ithPoint(i)
             let tangentNow = getTwoTangent(center: center, point: nextPoint)
             if i != 0 {
-                path.addCurve(to: nextPoint, control1: tangentLast.1, control2: tangentNow.0)
+                let avg = CGPoint(x: (tangentLast.1.x + tangentNow.0.x) / CGFloat(2.0), y: (tangentLast.1.y + tangentNow.0.y) / CGFloat(2.0))
+                path.addQuadCurve(to: nextPoint, control: avg)
+                //path.addCurve(to: nextPoint, control1: tangentLast.1, control2: tangentNow.0)
             } else {
                 path.move(to: nextPoint)
             }

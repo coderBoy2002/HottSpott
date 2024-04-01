@@ -57,7 +57,7 @@ extension CGVector {
     }
     
     func perpendicular() -> CGVector {
-        CGVector(dx: -dy, dy: dx) / len()
+        CGVector(dx: -dy, dy: dx)
     }
     
     static func *(lhs: CGVector, rhs: CGFloat) -> CGVector {

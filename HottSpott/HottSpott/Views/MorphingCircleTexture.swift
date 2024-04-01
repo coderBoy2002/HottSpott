@@ -57,6 +57,17 @@ extension MorphingCircleTexture {
             lastXSecond = lastX
             lastX = xRandom
             
+            /* INMPLEMENT RANDOM RADIUS CHECK THIS OVER
+             let radius = min(screenWidth / 2, screenHeight / 2)
+             
+             ranCos = Double.random(in: -1.0..<1.0)
+             ranSin = 1 - (ranCos * ranCos)
+             ranR = Double.random(in: 0..<radius)
+             xRandom = ranR * ranCos + screenWidth
+             yRandom = ranR * ranSin + screenHeight
+             
+             */
+            
             
             let yRandomOffset = CGFloat(index) * stepSize * (1.0 - percentOffset + Double.random(in: 0.0...(2.0 * percentOffset)))
             var yRandom = (stepSize / 2) + yRandomOffset
@@ -87,7 +98,7 @@ extension MorphingCircleTexture {
         400
     }
     private var pointsBottom: Int {
-        4
+        3
     }
     private var durationBottom: Double {
         10.0 * speed
@@ -122,7 +133,7 @@ extension MorphingCircleTexture {
         200
     }
     private var pointsMiddle: Int {
-        4
+        3
     }
     private var durationMiddle: Double {
         10.0 * speed

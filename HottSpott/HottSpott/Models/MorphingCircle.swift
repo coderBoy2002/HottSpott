@@ -47,6 +47,9 @@ struct MorphingCircle: View & Identifiable & Hashable {
     }
     
     var body: some View {
+        /*
+          TODO LEARN THIS TIMER NONSENSE
+         */
         MorphingCircleShape(morph)
             .fill(color)
             .frame(width: size, height: size, alignment: .center)
