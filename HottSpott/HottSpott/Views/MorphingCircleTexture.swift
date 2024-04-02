@@ -24,11 +24,11 @@ struct MorphingCircleTexture: View {
     var body: some View {
         ZStack {
             bottomLayer
-                .opacity(0.1)
+                .opacity(0.2)
             
             if !onlyBottom {
                 middleLayer
-                    .opacity(0.2)
+                    .opacity(0.3)
             }
         }
     }
@@ -96,16 +96,16 @@ extension MorphingCircleTexture {
                                  morphingRange: 400,
                                  points: 3,
                                  duration: 10.0 * speed,
-                                 secting: 0.7)
+                                 secting: 0.9)
     }
     
     private var middleLayer: some View {
-        return getLayerOfTexture(size: 800,
-                                 numCircles: 12,
-                                 morphingRange: 200,
-                                 points: 3,
+        return getLayerOfTexture(size: 1100,
+                                 numCircles: 5,
+                                 morphingRange: 300,
+                                 points: 4,
                                  duration: 10.0 * speed,
-                                 secting: 0.7)
+                                 secting: 0.9)
     }
 }
 
