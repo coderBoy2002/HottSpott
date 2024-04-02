@@ -48,10 +48,10 @@ extension MorphingCircleTexture {
         
         for index in 0..<numCircles {
             let sudoRadius = min(screenWidth / 2, screenHeight / 2) * 1.5
-            var ranR: CGFloat = CGFloat(Double.random(in: 0..<sudoRadius))
+            let ranR = CGFloat(Double.random(in: 0..<sudoRadius))
             
-            var ranCos: CGFloat = CGFloat(Double.random(in: -1.0..<1.0))
-            var ranSin: CGFloat = sqrt(1 - (ranCos * ranCos))
+            let ranCos = CGFloat(Double.random(in: -1.0..<1.0))
+            let ranSin = sqrt(1 - (ranCos * ranCos))
             
             let xRandom = ranR * ranCos + screenWidth / 2
             let yRandom = ranR * ranSin + screenHeight / 2
@@ -96,7 +96,7 @@ extension MorphingCircleTexture {
                                  morphingRange: 400,
                                  points: 3,
                                  duration: 10.0 * speed,
-                                 secting: 8)
+                                 secting: 0.7)
     }
     
     private var middleLayer: some View {
@@ -105,7 +105,7 @@ extension MorphingCircleTexture {
                                  morphingRange: 200,
                                  points: 3,
                                  duration: 10.0 * speed,
-                                 secting: 6)
+                                 secting: 0.7)
     }
 }
 
