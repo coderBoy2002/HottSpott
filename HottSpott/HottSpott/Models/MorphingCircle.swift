@@ -95,9 +95,10 @@ extension MorphingCircle {
         for i in 0..<self.points where Int.random(in: 0...1) == 0 {
             let xRandom = Float((imageOffsets[i].x - screenWidth / 2) / sudoRadius)
             let yRandom = Float((imageOffsets[i].y - screenHeight / 2) / sudoRadius)
-            let xFact = i / self.points
-            let yFact = 1 - xFact
-            morphing[i] = morphingRange * (xRandom * xFact + yRandom * yFact)
+            let xFact = Float(i / self.points)
+            let yFact = Float(1.0 - xFact)
+            let shuffleRandom = xRandom * xFact + yRandom * yFact
+            morphing[i] = morphingRange * shuffleRandom
         }
         return AnimatableVector(values: morphing)
     }
