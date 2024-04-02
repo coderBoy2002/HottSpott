@@ -9,31 +9,7 @@ import Foundation
 import SwiftUI
 
 struct MorphingCircle: View & Identifiable & Hashable {
-    static func == (lhs: MorphingCircle, rhs: MorphingCircle) -> Bool {
-        lhs.id == rhs.id
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-    
-    let id = UUID()
-    @State var morph: AnimatableVector = AnimatableVector.zero
-    @State var timer: Timer?
-    
-    func morphCreator() -> AnimatableVector {
-        let range = Float(-morphingRange)...Float(morphingRange)
-        var morphing = Array.init(repeating: Float.zero, count: self.points)
-        for i in 0..<morphing.count where Int.random(in: 0...1) == 0 {
-            morphing[i] = Float.random(in: range)
-        }
-        return AnimatableVector(values: morphing)
-    }
-    
-    func update() {
-        morph = morphCreator()
-    }
-    
+    // ANIMATION VAR
     let duration: Double
     let points: Int
     let secting: Double
@@ -42,14 +18,23 @@ struct MorphingCircle: View & Identifiable & Hashable {
     var color: Color
     let morphingRange: CGFloat
     
+    // DIMENSION VAR
+    let imageOffsets: [CGPoint]
+    let screenWidth: CGFloat
+    let screenHeight: CGFloat
     var radius: CGFloat {
         outerSize / 2
     }
     
+    // INEXCLIPABLE VAR
+    let id = UUID()
+    @State var morph: AnimatableVector = AnimatableVector.zero
+    @State var timer: Timer?
+
+    
     var body: some View {
-        /*
-          TODO LEARN THIS TIMER NONSENSE
-         */
+
+        // TODO LEARN THIS TIMER NONSENSE
         MorphingCircleShape(morph)
             .fill(color)
             .frame(width: size, height: size, alignment: .center)
@@ -68,7 +53,7 @@ struct MorphingCircle: View & Identifiable & Hashable {
         
     }
     
-    init(_ size:CGFloat = 300, morphingRange: CGFloat = 30, color: Color = .red, points: Int = 4,  duration: Double = 5.0, secting: Double = 2) {
+    init(_ size:CGFloat = 300, morphingRange: CGFloat = 30, color: Color = .red, points: Int = 4,  duration: Double = 5.0, secting: Double = 2, imageOffsets: [CGPoint], screenWidth: CGFloat, screenHeight: CGFloat) {
         self.points = points
         self.color = color
         self.morphingRange = morphingRange
@@ -77,6 +62,11 @@ struct MorphingCircle: View & Identifiable & Hashable {
         self.size = morphingRange * 2 < size ? size - morphingRange * 2 : 5
         self.outerSize = size
         morph = AnimatableVector(values: [])
+        
+        self.imageOffsets = imageOffsets
+        self.screenWidth = screenWidth
+        self.screenHeight = screenHeight
+        
         update()
     }
     
@@ -85,9 +75,35 @@ struct MorphingCircle: View & Identifiable & Hashable {
         morphNew.color = newColor
         return morphNew
     }
+    
+    static func == (lhs: MorphingCircle, rhs: MorphingCircle) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
 
-
-#Preview {
-    MorphingCircle(150, morphingRange: 30, color: .red, points: 4,  duration: 5.0, secting: 2)
+extension MorphingCircle {
+    
+    func morphCreator() -> AnimatableVector {
+        //let range = Float(-morphingRange)...Float(morphingRange)
+        let sudoRadius = min(screenWidth / 2, screenHeight / 2) * 1.5
+        var morphing = Array.init(repeating: Float.zero, count: self.points)
+        
+        for i in 0..<self.points where Int.random(in: 0...1) == 0 {
+            let xRandom = Float((imageOffsets[i].x - screenWidth / 2) / sudoRadius)
+            let yRandom = Float((imageOffsets[i].y - screenHeight / 2) / sudoRadius)
+            let xFact = Float(i / self.points)
+            let yFact = Float(1.0 - xFact)
+            let shuffleRandom = xRandom * xFact + yRandom * yFact
+            morphing[i] = morphingRange * shuffleRandom
+        }
+        return AnimatableVector(values: morphing)
+    }
+    
+    func update() {
+        morph = morphCreator()
+    }
 }

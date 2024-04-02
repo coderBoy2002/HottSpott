@@ -16,6 +16,8 @@ struct MorphingCircleGroup: View {
     @State var secting: Double
     @State var color: Color
     @State var imageOffsets: [CGPoint]
+    @State var screenWidth: CGFloat
+    @State var screenHeight: CGFloat
     
     init(size: CGFloat, 
          numCircles: Int,
@@ -24,7 +26,9 @@ struct MorphingCircleGroup: View {
          duration: Double,
          secting: Double,
          color: Color,
-         imageOffsets: [CGPoint]) {
+         imageOffsets: [CGPoint],
+         screenWidth: CGFloat,
+         screenHeight: CGFloat) {
         self.size = size
         self.numCircles = numCircles
         self.morphingRange = morphingRange
@@ -33,12 +37,14 @@ struct MorphingCircleGroup: View {
         self.secting = secting
         self.color = color
         self.imageOffsets = imageOffsets
+        self.screenWidth = screenWidth
+        self.screenHeight = screenHeight
     }
     
     var body: some View {
         ZStack {
             ForEach(0..<numCircles) { index in
-                MorphingCircle(size, morphingRange: morphingRange, color: color, points: points,  duration: duration, secting: secting)
+                MorphingCircle(size, morphingRange: morphingRange, color: color, points: points,  duration: duration, secting: secting, imageOffsets: imageOffsets, screenWidth: screenWidth, screenHeight: screenHeight)
                     .position(
                         x: imageOffsets[index].x,
                         y: imageOffsets[index].y
