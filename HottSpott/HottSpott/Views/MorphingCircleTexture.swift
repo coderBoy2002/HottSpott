@@ -86,7 +86,9 @@ extension MorphingCircleTexture {
                     duration: duration,
                     secting: secting,
                     color: color,
-                    imageOffsets: imageOffsets
+                    imageOffsets: imageOffsets,
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight
                 )
     }
     

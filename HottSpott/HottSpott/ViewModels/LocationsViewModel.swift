@@ -28,6 +28,9 @@ class LocationsViewModel: ObservableObject {
     @Published var startX: CGFloat = -100
     let swipeCutOff: CGFloat = 300
     
+    
+    
+    
     init() {
         let locations = LocationsDataService.locations
         self.locations = locations
