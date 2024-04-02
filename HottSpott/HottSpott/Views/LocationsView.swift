@@ -62,7 +62,7 @@ extension LocationsView {
                 .fill(.ultraThinMaterial)
                 .offset(y: 70)
                 .frame(width: 300, height: 50)
-            Text("HottSpott")
+            Text("\(vm.ratings)")
                 .offset(y: 70)
                 .padding()
                 .foregroundStyle(.primary)

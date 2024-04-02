@@ -28,6 +28,8 @@ class LocationsViewModel: ObservableObject {
     @Published var startX: CGFloat = -100
     let swipeCutOff: CGFloat = 300
     
+    @Published var ratings: [Rating] = []
+    
     init() {
         let locations = LocationsDataService.locations
         self.locations = locations
@@ -35,6 +37,7 @@ class LocationsViewModel: ObservableObject {
         self.nextLocation = locations.first!
         self.lastLocation = locations.last!
         self.changeLocation(location: locations.first!)
+        getRatings()
     }
     
     func changeLocation(location: Location) {
@@ -110,6 +113,28 @@ class LocationsViewModel: ObservableObject {
             
             swipeAmount = swipeFactor * (curX - min(screenWidth / 2, startX))
         }
+    }
+    
+    func getRatings() {
+        let url = URL(string: "https://8ou4fync89.execute-api.us-east-1.amazonaws.com/items")!
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            if let data = data {
+                do {
+                    let items = try JSONDecoder().decode([Rating].self, from: data)
+                    DispatchQueue.main.async {
+                        self?.ratings = items
+                    }
+                } catch {
+                    print("Failed to decode JSON: \(error)")
+                }
+            } else if let error = error {
+                print("HTTP Request Failed \(error)")
+            }
+        }
+        task.resume()
     }
 
     

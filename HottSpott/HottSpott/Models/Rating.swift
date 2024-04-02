@@ -8,8 +8,7 @@
 import Foundation
 import MapKit
 
-struct Rating {
-    let coordinate: CLLocationCoordinate2D
-    let ratings: Int
-    // test commit
+struct Rating: Decodable {
+    let id: String
+    let rating: Double
 }
