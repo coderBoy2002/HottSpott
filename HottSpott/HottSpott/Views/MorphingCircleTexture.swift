@@ -42,27 +42,7 @@ struct MorphingCircleTexture: View {
  
 
 extension MorphingCircleTexture {
-    
-    private func getPartitions(numCircles: Int, size: CGFloat) -> [CGPoint] {
-        var imageOffsets: [CGPoint] = Array(repeating: CGPoint.zero, count: numCircles)
-        
-        for index in 0..<numCircles {
-            let sudoRadius = min(screenWidth / 2, screenHeight / 2) * 1.5
-            let ranR = CGFloat(Double.random(in: 0..<sudoRadius))
-            
-            let ranCos = CGFloat(Double.random(in: -1.0..<1.0))
-            let ranSin = sqrt(1 - (ranCos * ranCos))
-            
-            let xRandom = ranR * ranCos + screenWidth / 2
-            let yRandom = ranR * ranSin + screenHeight / 2
-            
-            imageOffsets[index] = CGPoint(
-                x: xRandom,
-                y: yRandom
-            )
-        }
-        return imageOffsets
-    }
+
     
     private func getLayerOfTexture(size: CGFloat,
                                    numCircles: Int,
@@ -71,24 +51,16 @@ extension MorphingCircleTexture {
                                    duration: Double,
                                    secting: Double) -> some View {
         
-        
-        // CREATES OFFSETS FOR EACH MORPHING CIRCLE
-        let imageOffsets = getPartitions(numCircles: numCircles,
-                                               size: size)
-        
-        
-        
         return MorphingCircleGroup(
                     size: size,
-                    numCircles: numCircles,
                     morphingRange: morphingRange,
+                    color: color,
                     points: points,
                     duration: duration,
                     secting: secting,
-                    color: color,
-                    imageOffsets: imageOffsets,
                     screenWidth: screenWidth,
-                    screenHeight: screenHeight
+                    screenHeight: screenHeight,
+                    numCircles: numCircles
                 )
     }
     
