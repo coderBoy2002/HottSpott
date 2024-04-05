@@ -28,7 +28,7 @@ struct MorphingCircleTexture: View {
             
             if !onlyBottom {
                 middleLayer
-                    .opacity(0.3)
+                    .opacity(0.4)
             }
         }
     }
@@ -37,7 +37,7 @@ struct MorphingCircleTexture: View {
 
 
 #Preview {
-    MorphingCircleTexture(color: Color.red, speed: 0.5, onlyBottom: false)
+    MorphingCircleTexture(color: Color.red, speed: 1.2, onlyBottom: false)
 }
  
 
@@ -65,21 +65,21 @@ extension MorphingCircleTexture {
     }
     
     private var bottomLayer: some View {
-        return getLayerOfTexture(size: 1500,
-                                 numCircles: 3,
-                                 morphingRange: 400,
+        return getLayerOfTexture(size: 500,
+                                 numCircles: 10,
+                                 morphingRange: 100,
                                  points: 3,
                                  duration: 10.0 * speed,
-                                 secting: 0.9)
+                                 secting: 1.0)
     }
     
     private var middleLayer: some View {
-        return getLayerOfTexture(size: 1100,
+        return getLayerOfTexture(size: 250,
                                  numCircles: 5,
-                                 morphingRange: 300,
-                                 points: 4,
+                                 morphingRange: 50,
+                                 points: 3,
                                  duration: 10.0 * speed,
-                                 secting: 0.9)
+                                 secting: 1.0)
     }
 }
 

@@ -68,7 +68,9 @@ struct MorphingCircleGroup: View & Identifiable & Hashable {
         self.size = morphingRange * 2 < size ? size - morphingRange * 2 : 5
         self.outerSize = size
         
-        self.imageOffsets = []
+        self.imageOffsets = Array.init(repeating: CGPoint.zero,
+                                       count: numCircles)
+        
         self.screenWidth = screenWidth
         self.screenHeight = screenHeight
         
@@ -129,8 +131,8 @@ extension MorphingCircleGroup {
         let yRandom = Float((curY - screenHeight / 2) / sudoRadius)
         
         for i in 0..<numPoints{
-            let xFact = Float(i / numPoints)
-            let yFact = Float(1.0 - xFact)
+            let xFact = Float(i - 1) / Float(numPoints)
+            let yFact = 1.0 - Float(xFact)
             
             morphing[i] = Float(morphingRange) * (xRandom * xFact + yRandom * yFact)
         }
@@ -148,21 +150,26 @@ extension MorphingCircleGroup {
         func getPartitions(numCircles: Int, size: CGFloat) -> [CGPoint] {
             var imageOffsetsTemp: [CGPoint] = Array(repeating: CGPoint.zero, count: numCircles)
             
+            let xRadius = screenWidth / 2
+            let yRadius = screenHeight / 2
+            
             for index in 0..<numCircles {
-                let sudoRadius = min(screenWidth / 2, screenHeight / 2) * 1.5
-                let ranR = CGFloat(Double.random(in: 0..<sudoRadius))
+                let l = Double(index) / Double(numCircles)
+                let u = Double(index + 1) / Double(numCircles)
+                let ranFloat = Double.random(in: l..<u)
+                let ranRadian = Double.random(in: 0.0..<2*Double.pi)
+                let ranCos = cos(ranRadian)
+                let ranSin = sin(ranRadian)
                 
-                let ranCos = CGFloat(Double.random(in: -1.0..<1.0))
-                let ranSin = sqrt(1 - (ranCos * ranCos))
-                
-                let xRandom = ranR * ranCos + screenWidth / 2
-                let yRandom = ranR * ranSin + screenHeight / 2
+                let xRandom = xRadius * ranFloat * ranCos + screenWidth / 2
+                let yRandom = yRadius * ranFloat * ranSin + screenHeight / 2
                 
                 imageOffsetsTemp[index] = CGPoint(
                     x: xRandom,
                     y: yRandom
                 )
             }
+            imageOffsetsTemp.shuffle()
             return imageOffsetsTemp
         }
 }

@@ -31,11 +31,11 @@ struct RatingView: View {
 extension RatingView {
     private var temperatureSlider: some View {
         VStack {
-            MorphingCircleTexture(color: Color.blue, speed: 0.5, onlyBottom: false)
+            MorphingCircleTexture(color: Color.blue, speed: 1.2, onlyBottom: false)
                     .ignoresSafeArea()
                     .offset(y: screenHeight/2 * 0.4 - ratingLineHeight)
                     .rotationEffect(.degrees(-180))
-            MorphingCircleTexture(color: Color.red, speed: 0.5, onlyBottom: false)
+            MorphingCircleTexture(color: Color.red, speed: 1.2, onlyBottom: false)
                     .ignoresSafeArea()
                     .offset(y: -screenHeight/2 * 1.6 + ratingLineHeight)
         }
